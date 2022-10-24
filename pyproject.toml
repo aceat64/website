@@ -9,7 +9,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.10"
 mkdocs-material = {git = "https://github.com/squidfunk/mkdocs-material-insiders.git"}
-mkdocs-minify-plugin = "^0.5.0"
+mkdocs-minify-plugin = "^0.6.0"
 Pillow = "^9.2.0"
 CairoSVG = "^2.5.2"
 
