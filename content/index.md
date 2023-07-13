@@ -41,7 +41,7 @@ This is my personal website, so all opinions are my own. I made it to better doc
 
 ## Who Am I
 
-Hi, I'm Andrew LeCody. I am a maker, nerd, and a bunch of other labels that all boil down to: I like to learn and to build stuff. Professionally I am a Senior DevOps Engineer with experience at every layer, all the way down to hardware since I started my career working in datacenters. Outside of work I'm either learning, making stuff, playing video games, or camping/hiking/offroading. I helped start the [Dallas Makerspace](https://dallasmakerspace.org), serving on the Board of Directors and as President for the first 5 years of the organization.
+Hi, I'm Andrew LeCody. I am a maker, nerd, and a bunch of other labels that all boil down to: I like to learn and to build stuff. Professionally I am a Staff DevOps Engineer with experience at every layer, all the way down to hardware since I started my career working in datacenters. Outside of work I'm either learning, making stuff, playing video games, or camping/hiking/offroading. I helped start the [Dallas Makerspace](https://dallasmakerspace.org), serving on the Board of Directors and as President for the first 5 years of the organization.
 
 I believe strongly in the power of collaboration, protection of human rights, and taking care of our environment.
 

@@ -12,6 +12,7 @@ mkdocs-material = {git = "https://github.com/squidfunk/mkdocs-material-insiders.
 mkdocs-minify-plugin = "^0.6.4"
 Pillow = "^10.0.0"
 CairoSVG = "^2.7.0"
+pngquant = "^1.0.7"
 
 
 [build-system]

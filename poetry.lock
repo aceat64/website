@@ -784,6 +784,20 @@ graphviz = ["graphviz (>=0.20.1)"]
 test = ["covdefaults (>=2.3)", "diff-cover (>=7.6)", "pip (>=23.1.2)", "pytest (>=7.4)", "pytest-cov (>=4.1)", "pytest-mock (>=3.11.1)", "virtualenv (>=20.23.1,<21)"]
 
 [[package]]
+name = "pngquant"
+version = "1.0.7"
+description = "A Python Wrapper of pngquant"
+optional = false
+python-versions = "*"
+files = [
+    {file = "pngquant-1.0.7-py2.py3-none-any.whl", hash = "sha256:1bfa5f84ce9907ef8c175fd05809d1e44dacf9c7430523c5c12eb852216dfdc1"},
+    {file = "pngquant-1.0.7.tar.gz", hash = "sha256:bea420002537fdeaf3316b0f06d334f61e89d69f04a30e42c08983f2c6016e15"},
+]
+
+[package.dependencies]
+Pillow = "*"
+
+[[package]]
 name = "pycparser"
 version = "2.21"
 description = "C parser in Python"

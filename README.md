@@ -6,7 +6,7 @@ This is my personal website, so all opinions are my own. I made it to better doc
 
 Note: Since I use the Insiders version of Material for MkDocs, you will not able to run this locally unless you are also a sponsor of the project.
 
-Requires [Poetry](https://python-poetry.org/), Python 3.10 or higher and a GitHub personal access token (`$GH_TOKEN`). I recommend using `pyenv` to install Python.
+Requires [Poetry](https://python-poetry.org/), Python 3.11 or higher and a GitHub personal access token (`$GH_TOKEN`). I recommend using `pyenv` to install Python.
 
 ### Configure access to Insiders
 
@@ -29,7 +29,7 @@ poetry run mkdocs build
 
 ## Copyright
 
-Copyright (c) 2022 Andrew LeCody
+Copyright (c) 2023 Andrew LeCody
 
 This work is licensed under a Creative Commons Attribution 4.0 International License.
 

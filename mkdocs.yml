@@ -8,6 +8,7 @@ nav:
       - guides/nginx-proxy-manager-udmp.md
       - guides/rpi-k8s-talos-terraform.md
       - guides/mkdocs-material-insider-github-pages-action.md
+      - guides/http-status-codes.md
   - Smart Home:
       - smart-home/architecture.md
       - smart-home/garage-door.md
@@ -33,6 +34,7 @@ plugins:
   - blog
   - search
   - social
+  - optimize
   - minify:
       minify_html: true
   - privacy
