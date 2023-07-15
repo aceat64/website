@@ -101,8 +101,7 @@ While it's optional, I recommend installing the [bat-extras](https://github.com/
 
 To easily format help output from a command, I put the following alias and function in my `~/.zshrc` file:
 
-```shell
-# ~/.zshrc
+```shell title="~/.zshrc"
 alias bathelp='bat --plain --language=help'
 help() {
     "$@" --help 2>&1 | bathelp
@@ -173,8 +172,7 @@ brew install git-delta
 
 Update your `~/.gitconfig` file:
 
-```toml
-# ~/.gitconfig
+```toml title="~/.gitconfig"
 [core]
     pager = delta
 

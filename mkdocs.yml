@@ -77,6 +77,8 @@ theme:
     - navigation.tracking
     - navigation.tabs
     - navigation.top
+    - content.code.copy
+    - content.code.select
   palette:
     # Palette toggle for automatic mode
     - media: "(prefers-color-scheme)"
