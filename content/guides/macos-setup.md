@@ -124,6 +124,40 @@ _<https://github.com/sharkdp/fd>_
 
 ---
 
+## Version Managers
+
+There are helpful tools to install and run multiple versions of various programming languages.
+
+### Python (pyenv)
+
+```shell
+brew install pyenv
+```
+
+_<https://github.com/pyenv/pyenv>_
+
+---
+
+### NodeJS (nvm)
+
+Once the install completes, be sure to follow the instructions provided and add the required lines to your ~/.zhsrc file.
+
+```shell
+brew install nvm
+```
+
+_<https://github.com/nvm-sh/nvm>_
+
+---
+
+### Terraform (tfenv)
+
+```shell
+brew install tfenv
+```
+
+_<https://github.com/tfutils/tfenv>_
+
 ## Developer Tools
 
 ### PostgreSQL
@@ -156,6 +190,12 @@ A Python dependency manager and packaging tool.
 
 ```shell
 curl -sSL https://install.python-poetry.org | python3 -
+```
+
+If you chose to install `pyenv`, I suggest enabling this option so that Poetry will default to the active/global version of Python:
+
+``` shell
+poetry config virtualenvs.prefer-active-python true
 ```
 
 _<https://python-poetry.org/>_
@@ -205,40 +245,6 @@ brew install prettier
 ```
 
 _<https://prettier.io/>_
-
-## Version Managers
-
-There are helpful tools to install and run multiple versions of various programming languages.
-
-### Python (pyenv)
-
-```shell
-brew install pyenv
-```
-
-_<https://github.com/pyenv/pyenv>_
-
----
-
-### NodeJS (nvm)
-
-Once the install completes, be sure to follow the instructions provided and add the required lines to your ~/.zhsrc file.
-
-```shell
-brew install nvm
-```
-
-_<https://github.com/nvm-sh/nvm>_
-
----
-
-### Terraform (tfenv)
-
-```shell
-brew install tfenv
-```
-
-_<https://github.com/tfutils/tfenv>_
 
 ## Kubernetes Tools
 
