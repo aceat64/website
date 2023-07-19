@@ -149,6 +149,10 @@ When the site said no `.zip` files, they meant it.
 
 Yes, this is an [official status code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/418). It's got an [RFC](https://www.rfc-editor.org/rfc/rfc2324#section-2.3.2) and everything.
 
+### 422 - Unprocessable Content
+
+Originally used for WebDAV, this status code is now used fairly widely. This error code is used when the request syntax and content is correct, but can't be processed. Most commonly this means that you are missing a required field.
+
 ### 429 - Too Many Requests
 
 Slow down, you hit a rate limit.
