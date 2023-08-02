@@ -22,6 +22,19 @@ esp8266:
   # Keeps the light's state saved in case of power loss
   restore_from_flash: true
 
+# Enable logging
+logger:
+  # Make sure logging is not using the serial port
+  baud_rate: 0
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "xxxxxx"
+
+ota:
+  password: !secret ota_password
+
 wifi:
   # Use a static IP, it improves connection time
   # Recommended by ESPHome: https://esphome.io/components/wifi.html
@@ -41,17 +54,6 @@ wifi:
 
 captive_portal:
 
-# Enable logging
-logger:
-  # Make sure logging is not using the serial port
-  baud_rate: 0
-
-# Enable Home Assistant API
-api:
-
-ota:
-  password: !secret ota_password
-
 output:
   - platform: gpio
     pin: GPIO12
@@ -66,6 +68,7 @@ light:
     name: ${friendly_name}
     output: power
     id: powerswitch
+    restore_mode: RESTORE_DEFAULT_OFF
     on_turn_on:
       - output.turn_on: led1
     on_turn_off:
@@ -94,14 +97,14 @@ binary_sensor:
 substitutions:
   device_name: hall-light
   friendly_name: Hall Light
-  pwm_min_power: 15% # keep dimming functional at lowest levels
-  no_delay: 0s # transition when changing dimmer_lvl & relay delay
-  transition_length: .5s # transition when turning on/off
-  long_press_min: .4s # minimum time to activate long-press action
-  long_press_max: 2s # maximum time to activate long-press action
-  long_press_up: 100% # long press brightness
-  long_press_down: 33% # long press brightness
-  long_press_main: 50% # long press brightness
+  pwm_min_power: 15%      # keep dimming functional at lowest levels
+  no_delay: 0s            # transition when changing dimmer_lvl & relay delay
+  transition_length: .5s  # transition when turning on/off
+  long_press_min: .4s     # minimum time to activate long-press action
+  long_press_max: 2s      # maximum time to activate long-press action
+  long_press_up: 100%     # long press brightness
+  long_press_down: 33%    # long press brightness
+  long_press_main: 50%    # long press brightness
 
 esphome:
   name: ${device_name}
@@ -115,6 +118,19 @@ esp8266:
   board: esp01_1m
   # Keeps the light's state saved in case of power loss
   restore_from_flash: true
+
+# Enable logging
+logger:
+  # Make sure logging is not using the serial port
+  baud_rate: 0
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "xxxxxx"
+
+ota:
+  password: !secret ota_password
 
 wifi:
   # Use a static IP, it improves connection time
@@ -134,17 +150,6 @@ wifi:
     password: !secret fallback_password
 
 captive_portal:
-
-# Enable logging
-logger:
-  # Make sure logging is not using the serial port
-  baud_rate: 0
-
-# Enable Home Assistant API
-api:
-
-ota:
-  password: !secret ota_password
 
 output:
   - platform: gpio
@@ -175,6 +180,7 @@ light:
     output: pwm
     default_transition_length: ${no_delay}
     id: dimmer
+    restore_mode: RESTORE_DEFAULT_OFF
 
 status_led:
   pin:
@@ -259,7 +265,7 @@ globals:
   - id: dimmer_lvl
     type: float
     restore_value: no
-    initial_value: "1.0"
+    initial_value: '1.0'
 
 script:
   - id: apply_dimming
@@ -270,7 +276,7 @@ script:
           call.perform();
       - logger.log:
           format: "dimmer_lvl = %.2f"
-          args: ["id(dimmer_lvl)"]
+          args: ['id(dimmer_lvl)']
 
 interval:
   - interval: 250ms
