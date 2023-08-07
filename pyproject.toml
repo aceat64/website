@@ -11,7 +11,7 @@ python = "^3.11"
 mkdocs-material = {git = "https://github.com/squidfunk/mkdocs-material-insiders.git"}
 mkdocs-minify-plugin = "^0.7.0"
 Pillow = "^10.0.0"
-CairoSVG = "^2.7.0"
+CairoSVG = "^2.7.1"
 pngquant = "^1.0.7"
 
 
