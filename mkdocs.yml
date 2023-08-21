@@ -9,6 +9,7 @@ nav:
       - guides/rpi-k8s-talos-terraform.md
       - guides/mkdocs-material-insider-github-pages-action.md
       - guides/http-status-codes.md
+      - guides/zfs-notes.md
   - Smart Home:
       - smart-home/architecture.md
       - smart-home/garage-door.md

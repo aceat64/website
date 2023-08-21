@@ -1,0 +1,99 @@
+global:
+  logging:
+    # use syslog instead of stdout because it makes journald happy
+    - type: syslog
+      format: human
+      level: warn
+  monitoring:
+    # Maker prometheus metrics available for scraping
+    - type: prometheus
+      listen: ":9811"
+      listen_freebind: true # Enabled, so that zrepl will listen on all IPs, even if they are bound after zrepl starts
+
+# see /usr/share/doc/zrepl/examples
+# or https://zrepl.github.io/configuration/overview.html
+# or https://zrepl.github.io/quickstart/backup_to_external_disk.html
+
+jobs:
+  # snapshot creation + pruning for worldsgrave
+  - name: worldsgrave_snapshots
+    type: snap
+    filesystems: {
+        "worldsgrave<": true,
+        "worldsgrave/zrepl<": false, # Don't snapshot snapshots from rpool, that would be super dumb
+        "worldsgrave/k8s<": false, # Dont' snapshot k8s PVs, the ZFS operator will do that as needed
+        "worldsgrave/timemachine<": false, # Don't snapshot timemachine backups, that would also be dumb
+      }
+    # create snapshots with prefix `zrepl_` every 15 minutes
+    snapshotting:
+      type: periodic
+      interval: 15m
+      prefix: zrepl_
+    pruning:
+      keep:
+        # Fade-out scheme for snapshots starting with `zrepl_`
+        # - Keep all created in the last hour
+        # - Keep 24 each 1 hour apart
+        # - Keep 14 each 1 day apart
+        # - All older snapshots will be destroyed unless other keep rules apply to them
+        - type: grid
+          grid: 1x1h(keep=all) | 24x1h | 14x1d
+          regex: "^zrepl_.*"
+        # Keep all snapshots that don't have the `zrepl_` prefix
+        # This protects manually created snapshots from being pruned by zrepl
+        - type: regex
+          negate: true
+          regex: "^zrepl_.*"
+
+  # Provide a destination on worldsgrave for snapshots from rpool
+  - name: "worldsgrave_sink"
+    type: sink
+    root_fs: "worldsgrave/zrepl"
+    serve:
+      type: local
+      listener_name: localsink
+
+  # Backup root snapshots to worldsgrave
+  - name: "backup_root"
+    type: push
+    connect:
+      type: local
+      listener_name: localsink
+      client_identity: backup_root
+    filesystems: {
+        "rpool<": true,
+        "rpool/k3s_agent<": false, # Don't snapshot the k3s agent zvol, it's not needed
+        "rpool/k8s<": false, # Dont' snapshot k8s PVs, the ZFS operator will do that as needed
+      }
+    # Create snapshots with prefix `zrepl_` every 30 minutes
+    snapshotting:
+      type: periodic
+      interval: 30m
+      prefix: zrepl_
+    pruning:
+      keep_sender:
+        # Keep any snapshots on rpool that haven't been replicated to worldsgrave/zrepl yet
+        - type: not_replicated
+        # Fade-out scheme for snapshots starting with `zrepl_` on rpool
+        # - Keep all created in the last hour
+        # - Keep 24 each 1 hour apart
+        # - All older snapshots will be destroyed unless other keep rules apply to them
+        - type: grid
+          grid: 1x1h(keep=all) | 24x1h
+          regex: "zrepl_.*"
+        # Keep all snapshots that don't have the `zrepl_` prefix
+        - type: regex
+          negate: true
+          regex: "^zrepl_.*"
+      keep_receiver:
+        # Fade-out scheme for snapshots starting with `zrepl_` on worldsgrave/zrepl
+        # - Keep 14 each 1 day apart
+        # - All older snapshots will be destroyed unless other keep rules apply to them
+        - type: grid
+          grid: 14x1d
+          regex: "zrepl_.*"
+        # Keep all snapshots that don't have the `zrepl_` prefix
+        # This protects manually created snapshots from being pruned by zrepl
+        - type: regex
+          negate: true
+          regex: "^zrepl_.*"

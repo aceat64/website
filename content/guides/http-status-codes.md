@@ -1,5 +1,4 @@
 ---
-status: new
 description: A comical explanation of various HTTP status codes.
 ---
 
