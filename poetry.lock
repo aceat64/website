@@ -622,7 +622,7 @@ min-versions = ["babel (==2.9.0)", "click (==7.0)", "colorama (==0.4)", "ghp-imp
 
 [[package]]
 name = "mkdocs-material"
-version = "9.1.21+insiders.4.39.0"
+version = "9.2.3+insiders.4.39.1"
 description = "Documentation that simply works"
 optional = false
 python-versions = ">=3.7"
@@ -635,10 +635,9 @@ colorama = ">=0.4"
 jinja2 = ">=3.0"
 lxml = ">=4.6"
 markdown = ">=3.2"
-mkdocs = ">=1.5.1"
+mkdocs = ">=1.5.2"
 mkdocs-material-extensions = ">=1.1"
 paginate = ">=0.5.6"
-pipdeptree = ">=2.3"
 pygments = ">=2.14"
 pymdown-extensions = ">=9.9.1"
 readtime = ">=2.0"
@@ -652,7 +651,7 @@ images = ["cairosvg", "pillow"]
 type = "git"
 url = "https://github.com/squidfunk/mkdocs-material-insiders.git"
 reference = "HEAD"
-resolved_reference = "ba2d66efc88e99aae37ed63b28fe739aeb792058"
+resolved_reference = "34d2ab42db35d6a3a3bf9244bc8c958e7fe3f68a"
 
 [[package]]
 name = "mkdocs-material-extensions"
@@ -782,21 +781,6 @@ files = [
 [package.extras]
 docs = ["furo", "olefile", "sphinx (>=2.4)", "sphinx-copybutton", "sphinx-inline-tabs", "sphinx-removed-in", "sphinxext-opengraph"]
 tests = ["check-manifest", "coverage", "defusedxml", "markdown2", "olefile", "packaging", "pyroma", "pytest", "pytest-cov", "pytest-timeout"]
-
-[[package]]
-name = "pipdeptree"
-version = "2.13.0"
-description = "Command line utility to show dependency tree of packages."
-optional = false
-python-versions = ">=3.8"
-files = [
-    {file = "pipdeptree-2.13.0-py3-none-any.whl", hash = "sha256:70c582224a41f20c4b69be7aaeeed40b59d3f247a93b4d6891b3d772c9befc94"},
-    {file = "pipdeptree-2.13.0.tar.gz", hash = "sha256:ff71a48abd0b1ab810c23734b47de6ebd93270857d6665e21ed5ef6136fcba6e"},
-]
-
-[package.extras]
-graphviz = ["graphviz (>=0.20.1)"]
-test = ["covdefaults (>=2.3)", "diff-cover (>=7.7)", "pip (>=23.2)", "pytest (>=7.4)", "pytest-cov (>=4.1)", "pytest-mock (>=3.11.1)", "virtualenv (>=20.24,<21)"]
 
 [[package]]
 name = "platformdirs"
