@@ -19,7 +19,7 @@ This is my personal website, so all opinions are my own. I made it to better doc
 
     Suggested programs, utilities and settings for developers getting started on Mac. Including my clean and lightweight combination of ZSH plugins and utilities.
 
-    [:octicons-arrow-right-24: Read more](guides/macos-setup/)
+    [:octicons-arrow-right-24: Read more](guides/macos-setup.md)
 
 - :material-home-battery:{ .lg .middle } **Project: Battery Backup**
 
@@ -27,7 +27,7 @@ This is my personal website, so all opinions are my own. I made it to better doc
 
     After being without power for a week, I built a ~13kwh battery backup system to cover the most important circuits in our house (fridge, network and _some_ HVAC).
 
-    [:octicons-arrow-right-24: Details](projects/battery-backup/)
+    [:octicons-arrow-right-24: Details](projects/battery-backup.md)
 
 - :material-home-assistant:{ .lg .middle } **Smart Home: Architecture**
 
@@ -35,7 +35,7 @@ This is my personal website, so all opinions are my own. I made it to better doc
 
     A general overview of my smart home setup, powered by [Home Assistant](https://www.home-assistant.io/).
 
-    [:octicons-arrow-right-24: Read more](smart-home/architecture/)
+    [:octicons-arrow-right-24: Read more](smart-home/architecture.md)
 
 </div>
 

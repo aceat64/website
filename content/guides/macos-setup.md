@@ -52,6 +52,18 @@ _<https://github.com/traviscross/mtr>_
 
 ---
 
+### nano
+
+A small and friendly editor. As of macOS 12.3 nano was replaced with a symlink to pico. :angry:
+
+```shell
+brew install nano
+```
+
+_<https://www.nano-editor.org/>_
+
+---
+
 ### Nmap
 
 Network scanner.
@@ -121,6 +133,50 @@ brew install fd
 ```
 
 _<https://github.com/sharkdp/fd>_
+
+---
+
+## Vim Plugins
+
+vim-plug: Minimalist Vim Plugin Manager.
+
+```shell
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+
+??? example "~/.vimrc"
+
+    ``` vim
+    call plug#begin()
+    " The default plugin directory will be as follows:
+    "   - Vim (Linux/macOS): '~/.vim/plugged'
+    "   - Vim (Windows): '~/vimfiles/plugged'
+    "   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
+    " You can specify a custom plugin directory by passing it as the argument
+    "   - e.g. `call plug#begin('~/.vim/plugged')`
+    "   - Avoid using standard Vim directory names like 'plugin'
+
+    " Make sure you use single quotes
+    Plug 'tpope/vim-sensible'
+
+    " Uncomment to enable catppuccin theme
+    " Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+
+    " Initialize plugin system
+    " - Automatically executes `filetype plugin indent on` and `syntax enable`.
+    call plug#end()
+    " You can revert the settings after the call like so:
+    "   filetype indent off   " Disable file-type-specific indentation
+    "   syntax off            " Disable syntax highlighting
+
+    set termguicolors
+    colorscheme catppuccin_mocha
+    ```
+
+    Afterwards you'll need to run `:PlugInstall` from within vim.
+
+_<https://github.com/junegunn/vim-plug>_
 
 ---
 

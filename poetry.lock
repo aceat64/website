@@ -622,7 +622,7 @@ min-versions = ["babel (==2.9.0)", "click (==7.0)", "colorama (==0.4)", "ghp-imp
 
 [[package]]
 name = "mkdocs-material"
-version = "9.2.3+insiders.4.39.1"
+version = "9.2.5+insiders.4.40.1"
 description = "Documentation that simply works"
 optional = false
 python-versions = ">=3.7"
@@ -651,7 +651,7 @@ images = ["cairosvg", "pillow"]
 type = "git"
 url = "https://github.com/squidfunk/mkdocs-material-insiders.git"
 reference = "HEAD"
-resolved_reference = "34d2ab42db35d6a3a3bf9244bc8c958e7fe3f68a"
+resolved_reference = "2d13ce5c52e28ec6218e9bb3c6ab7c74d463f13e"
 
 [[package]]
 name = "mkdocs-material-extensions"

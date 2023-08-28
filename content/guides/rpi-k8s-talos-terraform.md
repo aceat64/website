@@ -36,4 +36,4 @@ At the end of this tutorial you'll have a fully working Kubernetes cluster with 
 * [loki-stack](https://grafana.com/docs/loki/latest/installation/helm/) 2.3.1
 * [kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack) 15.3.1
 * [rook-ceph](https://github.com/rook/rook/blob/master/Documentation/helm-operator.md) v1.6.1
-* [terraform-kubernetes-metallb](github.com/colinwilson/terraform-kubernetes-metallb) v0.1.6
+* [terraform-kubernetes-metallb](https://github.com/colinwilson/terraform-kubernetes-metallb) v0.1.6

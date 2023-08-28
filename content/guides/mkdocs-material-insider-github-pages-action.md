@@ -16,7 +16,7 @@ This site is built using [Material for MkDocs Insiders](https://squidfunk.github
 
 ## Getting Started
 
-You will need Python 3.10 (I strongly recommend using [pyenv](https://github.com/pyenv/pyenv)), [Poetry](https://python-poetry.org/) and a GitHub repository. If you are on macOS, check out my guide on [macOS Setup](/guides/macos-setup) to get your development environment up and running.
+You will need Python 3.10 (I strongly recommend using [pyenv](https://github.com/pyenv/pyenv)), [Poetry](https://python-poetry.org/) and a GitHub repository. If you are on macOS, check out my guide on [macOS Setup](macos-setup.md) to get your development environment up and running.
 
 ### Poetry Init
 

@@ -74,7 +74,7 @@ systemctl enable zfs-scrub@worldsgrave.timer
 
 ## Scheduled Snapshots
 
-Install zrepl, see [zrepl.yaml](zrepl.yaml) for reference.
+Install zrepl, see [zrepl.yaml](zfs-notes/zrepl.yaml) for reference.
 
 ## Useful Commands
 
