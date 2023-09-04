@@ -20,7 +20,7 @@ jobs:
     # unless the forked repo also has access to material for mkdocs insiders
     if: github.event.repository.fork == false
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Install dependencies
         run: sudo apt-get install pngquant
