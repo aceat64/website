@@ -302,6 +302,32 @@ brew install prettier
 
 _<https://prettier.io/>_
 
+---
+
+### hadolint
+
+ Dockerfile linter, validate inline bash, written in Haskell.
+
+```shell
+brew install hadolint
+```
+
+_<https://github.com/hadolint/hadolint>_
+
+---
+
+### dive
+
+ A tool for exploring each layer in a docker image.
+
+```shell
+brew install dive
+```
+
+_<https://github.com/wagoodman/dive>_
+
+---
+
 ## Kubernetes Tools
 
 ### kubectl
@@ -313,6 +339,24 @@ brew install kubernetes-cli
 ```
 
 _<https://kubernetes.io/>_
+
+---
+
+### krew
+
+Krew is the plugin manager for kubectl command-line tool.
+
+Follow the install instructions: <https://krew.sigs.k8s.io/docs/user-guide/setup/install/>
+
+The list of available plugins can be found here: <https://krew.sigs.k8s.io/plugins/>
+
+#### Plugins
+
+**get-all**: Like `kubectl get all` but _really_ everything
+
+```shell
+kubectl krew install get-all
+```
 
 ---
 
@@ -349,6 +393,13 @@ brew install derailed/k9s/k9s
 ```
 
 _<https://k9scli.io/>_
+
+## Fonts
+
+```shell
+brew tap homebrew/cask-fonts
+brew install font-hack-nerd-font font-meslo-lg-nerd-font font-ubuntu-mono-nerd-font
+```
 
 ## ZSH Setup
 
@@ -451,5 +502,5 @@ VS Code users will need to add the following to their `settings.json`:
 ```json
 "terminal.external.osxExec": "iTerm.app",
 "terminal.integrated.defaultProfile.osx": "zsh",
-"terminal.integrated.fontFamily": "MesloLGS NF"
+"terminal.integrated.fontFamily": "MesloLGS Nerd Font Mono"
 ```
