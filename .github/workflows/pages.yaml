@@ -29,7 +29,7 @@ jobs:
       # It is also used to cache the generated social media cards.
       # Persisting the cache across builds dramatically speeds up the process.
       - name: Load site cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           key: ${{ github.ref }}
           path: .cache
@@ -42,7 +42,7 @@ jobs:
         id: setup-python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: "3.12"
           # This ensures the package cache for poetry/pip is persisted, again speeding up this build action.
           cache: "poetry"
 
@@ -58,7 +58,7 @@ jobs:
         run: poetry run mkdocs build
 
       # Upload the built site as an artifact, this will be used by the deploy job.
-      - uses: actions/upload-pages-artifact@v2
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: "site"
 
@@ -75,4 +75,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v3
+        uses: actions/deploy-pages@v4
