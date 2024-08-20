@@ -10,6 +10,7 @@ nav:
       - guides/mkdocs-material-insider-github-pages-action.md
       - guides/http-status-codes.md
       - guides/zfs-notes.md
+      - guides/ipv6.md
   - Smart Home:
       - smart-home/architecture.md
       - smart-home/garage-door.md
@@ -104,3 +105,5 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Switch to system preference
+extra_css:
+  - stylesheets/ipv6.css

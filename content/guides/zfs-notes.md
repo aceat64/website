@@ -1,5 +1,4 @@
 ---
-status: new
 description: Various notes about my usage of ZFS/OpenZFS.
 ---
 

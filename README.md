@@ -29,7 +29,7 @@ poetry run mkdocs build
 
 ## Copyright
 
-Copyright (c) 2023 Andrew LeCody
+Copyright (c) 2022-2024 Andrew LeCody
 
 This work is licensed under a Creative Commons Attribution 4.0 International License.
 
