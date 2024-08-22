@@ -6,26 +6,36 @@ This is my personal website, so all opinions are my own. I made it to better doc
 
 Note: Since I use the Insiders version of Material for MkDocs, you will not able to run this locally unless you are also a sponsor of the project.
 
-Requires [Poetry](https://python-poetry.org/), Python 3.11 or higher and a GitHub personal access token (`$GH_TOKEN`). I recommend using `pyenv` to install Python.
-
-### Configure access to Insiders
-
-```shell
-poetry config repositories.github-squidfunk-mkdocs https://github.com/squidfunk/mkdocs-material-insiders.git
-poetry config http-basic.github-squidfunk-mkdocs username $GH_TOKEN
-```
+I'm currently testing out [uv](https://docs.astral.sh/uv/getting-started/installation/) for managing dependencies, virtual environments and Python versions.
 
 ### Dev Server
 
 ```shell
-poetry run mkdocs serve
+uv run mkdocs serve
 ```
 
 ### Build Site
 
 ```shell
-poetry run mkdocs build
+uv run mkdocs build
 ```
+
+### Troubleshooting
+
+On my mac, I needed install cairo (`brew install cairo`) and add the following to `~/.zshrc`:
+
+```shell
+# Needed to let python know where some libs are
+export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:/opt/homebrew/lib/pkgconfig:$PKG_CONFIG_PATH"
+export DYLD_LIBRARY_PATH="/usr/local/lib:/opt/homebrew/lib:$DYLD_LIBRARY_PATH"
+```
+
+### Dependabot
+
+Dependabot doesn't support `uv` yet:
+
+- <https://github.com/dependabot/dependabot-core/issues/10039>
+- <https://github.com/dependabot/dependabot-core/issues/10478>
 
 ## Copyright
 

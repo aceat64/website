@@ -1,21 +1,26 @@
-[tool.poetry]
+[project]
 name = "website"
 version = "0.1.0"
 description = "https://lickthesalt.com"
-authors = ["Andrew LeCody <andrewlecody@gmail.com>"]
-license = "Creative Commons Attribution 4.0 International"
+authors = [{name = "Andrew LeCody"}]
 readme = "README.md"
-
-[tool.poetry.dependencies]
-python = "^3.11"
-
-[tool.poetry.group.dev.dependencies]
-mkdocs-material = {git = "https://github.com/squidfunk/mkdocs-material-insiders.git"}
-mkdocs-minify-plugin = "^0.8.0"
-Pillow = "^10.1.0"
-CairoSVG = "^2.7.0"
-pngquant = "^1.0.7"
+license = {file = "LICENSE"}
+classifiers = ["Framework :: MkDocs"]
+requires-python = ">=3.12"
+dependencies = []
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+dev-dependencies = [
+    "mkdocs-material",
+    "mkdocs-minify-plugin>=0.8.0",
+    "pillow>=10.4.0",
+    "cairosvg>=2.7.1",
+    "pngquant>=1.0.8",
+]
+
+[tool.uv.sources]
+mkdocs-material = { git = "https://github.com/squidfunk/mkdocs-material-insiders" }

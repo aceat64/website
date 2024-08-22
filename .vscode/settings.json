@@ -1,11 +1,11 @@
 {
   "search.exclude": {
-    "**/material": true,
-    "**/node_modules": true,
-    "**/package-lock.json": true
+    "**/.cache": true,
+    "**/.venv": true,
+    "**/site": true,
+    "**/uv.lock": true
   },
   "search.followSymlinks": false,
-  "typescript.tsdk": "node_modules/typescript/lib",
   "yaml.schemas": {
     "https://squidfunk.github.io/mkdocs-material/schema.json": "mkdocs.yml"
   },
