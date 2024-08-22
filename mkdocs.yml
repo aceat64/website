@@ -106,4 +106,4 @@ theme:
         icon: material/brightness-4
         name: Switch to system preference
 extra_css:
-  - stylesheets/ipv6.css
+  - stylesheets/tables.css

@@ -1,0 +1,25 @@
+td.note-bg, td.note-bg ~ td         { background-color:#448aff; color: #000000; }
+td.abstract-bg, td.abstract-bg ~ td { background-color:#00b0ff; color: #000000; }
+td.info-bg, td.info-bg ~ td         { background-color:#00b8d4; color: #000000; }
+td.tip-bg, td.tip-bg ~ td           { background-color:#00bfa5; color: #000000; }
+td.success-bg, td.success-bg ~ td   { background-color:#00c853; color: #000000; }
+td.question-bg, td.question-bg ~ td { background-color:#64dd17; color: #000000; }
+td.warning-bg, td.warning-bg ~ td   { background-color:#ff9100; color: #000000; }
+td.failure-bg, td.failure-bg ~ td   { background-color:#ff5252; color: #000000; }
+td.danger-bg, td.danger-bg ~ td     { background-color:#ff1744; color: #000000; }
+td.bug-bg, td.bug-bg ~ td           { background-color:#f50057; color: #000000; }
+td.example-bg, td.example-bg ~ td   { background-color:#7c4dff; color: #000000; }
+td.quote-bg, td.quote-bg ~ td       { background-color:#9e9e9e; color: #000000; }
+
+td.note-bg-muted, td.note-bg-muted ~ td         { background-color:#448aff1a }
+td.abstract-bg-muted, td.abstract-bg-muted ~ td { background-color:#00b0ff1a }
+td.info-bg-muted, td.info-bg-muted ~ td         { background-color:#00b8d41a }
+td.tip-bg-muted, td.tip-bg-muted ~ td           { background-color:#00bfa51a }
+td.success-bg-muted, td.success-bg-muted ~ td   { background-color:#00c8531a }
+td.question-bg-muted, td.question-bg-muted ~ td { background-color:#64dd171a }
+td.warning-bg-muted, td.warning-bg-muted ~ td   { background-color:#ff91001a }
+td.failure-bg-muted, td.failure-bg-muted ~ td   { background-color:#ff52521a }
+td.danger-bg-muted, td.danger-bg-muted ~ td     { background-color:#ff17441a }
+td.bug-bg-muted, td.bug-bg-muted ~ td           { background-color:#f500571a }
+td.example-bg-muted, td.example-bg-muted ~ td   { background-color:#7c4dff1a }
+td.quote-bg-muted, td.quote-bg-muted ~ td       { background-color:#9e9e9e1a }
