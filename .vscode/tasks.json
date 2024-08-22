@@ -1,0 +1,24 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build",
+      "type": "shell",
+      "command": "poetry run mkdocs build",
+      "group": "build",
+      "presentation": {
+        "reveal": "silent"
+      },
+    },
+    {
+      "label": "Start and watch for changes",
+      "type": "shell",
+      "command": "poetry run mkdocs serve",
+      "isBackground": true,
+      "group": "build",
+      "presentation": {
+        "reveal": "silent"
+      }
+    }
+  ]
+}

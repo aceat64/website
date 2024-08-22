@@ -1,17 +1,27 @@
 {
+  "search.exclude": {
+    "**/material": true,
+    "**/node_modules": true,
+    "**/package-lock.json": true
+  },
+  "search.followSymlinks": false,
+  "typescript.tsdk": "node_modules/typescript/lib",
   "yaml.schemas": {
     "https://squidfunk.github.io/mkdocs-material/schema.json": "mkdocs.yml"
   },
+  "yaml.customTags": [
+    "!ENV scalar",
+    "!ENV sequence",
+    "tag:yaml.org,2002:python/name:material.extensions.emoji.to_svg",
+    "tag:yaml.org,2002:python/name:material.extensions.emoji.twemoji",
+    "tag:yaml.org,2002:python/name:pymdownx.superfences.fence_code_format",
+    "tag:yaml.org,2002:python/object/apply:pymdownx.slugs.slugify"
+  ],
   "markdownlint.config": {
     "MD007": {
       "indent": 4
     },
     "MD033": false
   },
-  "yaml.customTags": [
-    "tag:yaml.org,2002:python/name:materialx.emoji.twemoji",
-    "tag:yaml.org,2002:python/name:materialx.emoji.to_svg",
-    "tag:yaml.org,2002:python/name:pymdownx.superfences.fence_code_format"
-  ],
   "sarif-viewer.connectToGithubCodeScanning": "off"
 }
