@@ -9,10 +9,6 @@ classifiers = ["Framework :: MkDocs"]
 requires-python = ">=3.12"
 dependencies = []
 
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
-
 [tool.uv]
 dev-dependencies = [
     "mkdocs-material",

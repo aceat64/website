@@ -2,3 +2,4 @@
 .mypy_cache/
 site/
 .venv/
+website.egg-info/
