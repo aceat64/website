@@ -51,8 +51,8 @@ jobs:
           username: github
           password: ${{ secrets.GH_TOKEN }}
 
-      - name: Install the project
-        run: uv sync --all-extras --dev
+      # - name: Install the project
+      #   run: uv sync --all-extras --dev
 
       # The .cache directory is used for 3rd party assets, as part of the privacy plugin.
       # It is also used to cache the generated social media cards.
