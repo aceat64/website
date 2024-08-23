@@ -27,6 +27,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install dependencies
+        run: sudo apt-get install pngquant
+
       - name: Set up uv
         # Install a specific uv version using the installer
         run: curl -LsSf https://astral.sh/uv/0.3.1/install.sh | sh
