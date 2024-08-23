@@ -45,6 +45,12 @@ jobs:
             uv-${{ runner.os }}-${{ hashFiles('uv.lock') }}
             uv-${{ runner.os }}
 
+      - uses: extractions/netrc@v1
+        with:
+          machine: github.com
+          username: github
+          password: ${{ secrets.GH_TOKEN }}
+
       - name: Install the project
         run: uv sync --all-extras --dev
 
