@@ -49,7 +49,7 @@ jobs:
       # https://squidfunk.github.io/mkdocs-material/insiders/
       - name: Configure auth for Insiders
         run: |
-          echo "https://github:${{ secrets.GITHUB_TOKEN }}@github.com" >> $HOME/.git-credentials
+          echo "https://github:${{ secrets.GH_TOKEN }}@github.com" >> $HOME/.git-credentials
           git config --global credential.helper store
 
       - name: Install the project
