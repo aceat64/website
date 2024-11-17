@@ -24,6 +24,8 @@ nav:
       - blog/index.md
 extra:
   social:
+    - icon: fontawesome/brands/bluesky
+      link: https://bsky.app/profile/andrewlecody.bsky.social
     - icon: fontawesome/brands/mastodon
       link: https://social.treehouse.systems/@andrewlecody
     - icon: fontawesome/brands/github

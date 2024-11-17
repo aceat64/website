@@ -47,4 +47,4 @@ I believe strongly in the power of collaboration, protection of human rights, an
 
 ## Social Media
 
-I'm most active on <a rel="me" href="https://social.treehouse.systems/@andrewlecody">Mastodon</a> these days. You can also see what I'm up to by following me on [GitHub](https://github.com/aceat64).
+I'm most active on <a rel="me" href="https://bsky.app/profile/andrewlecody.bsky.social">Bluesky</a> and <a rel="me" href="https://social.treehouse.systems/@andrewlecody">Mastodon</a> these days. You can also see what I'm up to by following me on [GitHub](https://github.com/aceat64).
