@@ -5,6 +5,7 @@ nav:
   - About: index.md
   - Guides:
       - guides/macos-setup.md
+      - guides/terminal-and-shell-setup.md
       - guides/nginx-proxy-manager-udmp.md
       - guides/rpi-k8s-talos-terraform.md
       - guides/mkdocs-material-insider-github-pages-action.md

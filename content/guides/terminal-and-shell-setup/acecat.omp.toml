@@ -1,0 +1,110 @@
+version = 3
+
+[upgrade]
+  source = 'cdn'
+  interval = '168h'
+  auto = false
+  notice = false
+
+[palette]
+  base = '#1e1e2e'
+  text = '#cdd6f4'
+  pink = '#f5c2e7'
+  red = '#f38ba8'
+  yellow = '#f9e2af'
+  green = '#a6e3a1'
+  teal = '#94e2d5'
+  blue = '#89b4fa'
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+
+  [[blocks.segments]]
+    template = '{{ if .WSL }}WSL at {{ end }}{{.Icon}}'
+    foreground = 'p:text'
+    type = 'os'
+    style = 'plain'
+
+  [[blocks.segments]]
+    template = '  '
+    foreground = 'p:red'
+    type = 'root'
+    style = 'plain'
+
+  [[blocks.segments]]
+    template = ' {{ if eq .PWD "~" }}{{ else }}{{ end }} {{ .Path }}'
+    foreground = 'p:blue'
+    type = 'path'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      style = 'full'
+      folder_format = '<d>%s</d>'
+      edge_format = '<b>%s</b>'
+
+  [[blocks.segments]]
+    template = ' {{ .UpstreamIcon }} {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uF044 {{ .Working.String }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uF046 {{ .Staging.String }}{{ end }}'
+    foreground = 'p:yellow'
+    type = 'git'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      fetch_upstream_icon = true
+      fetch_status = true
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'right'
+
+  [[blocks.segments]]
+    template = ' <p:red> {{ reason .Code }}({{ .Code }})</>'
+    type = 'status'
+    style = 'plain'
+
+  [[blocks.segments]]
+    template = '  {{ .FormattedMs }}'
+    type = 'executiontime'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      style = 'round'
+      threshold = 3000
+
+  [[blocks.segments]]
+    template = '{{ if .SSHSession }}  {{ .UserName }}@{{ .HostName }}{{ end }}'
+    foreground = 'p:yellow'
+    type = 'session'
+    style = 'plain'
+
+  [[blocks.segments]]
+    template = '  {{ .CurrentDate | date .Format }}'
+    foreground = 'p:blue'
+    type = 'time'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      time_format = '15:04:05'
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+  [[blocks.segments]]
+    template = '❯ '
+    foreground = 'p:green'
+    type = 'status'
+    style = 'plain'
+    foreground_templates = ['{{ if gt .Code 0 }}p:red{{ end }}']
+
+    [blocks.segments.properties]
+      always_enabled = true
+
+[[tooltips]]
+  type = 'kubectl'
+  style = 'plain'
+  tips = [ 'kubectl' ]
+
+  [tooltips.properties]
+    display_default = true

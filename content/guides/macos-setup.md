@@ -10,7 +10,7 @@ Originally I wrote this guide to remind myself how to setup my M1 Macbook the wa
 
 Download and install these following the instructions on their websites:
 
-- [iTerm2](https://iterm2.com/downloads.html)
+- [Ghostty](https://ghostty.org/)
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Homebrew](https://brew.sh/)
 
@@ -184,7 +184,23 @@ _<https://github.com/junegunn/vim-plug>_
 
 There are helpful tools to install and run multiple versions of various programming languages.
 
+### Python (uv)
+
+An extremely fast Python package and project manager, written in Rust.
+
+```shell
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+_<https://docs.astral.sh/uv/>_
+
+---
+
 ### Python (pyenv)
+
+!!! note
+
+    I've stopped using `pyenv` in favor of `uv`.
 
 ```shell
 brew install pyenv
@@ -241,6 +257,10 @@ _<https://github.com/evilmartians/lefthook>_
 ---
 
 ### Poetry
+
+!!! note
+
+    I've stopped using `poetry` in favor of `uv`.
 
 A Python dependency manager and packaging tool.
 
@@ -399,108 +419,4 @@ _<https://k9scli.io/>_
 ```shell
 brew tap homebrew/cask-fonts
 brew install font-hack-nerd-font font-meslo-lg-nerd-font font-ubuntu-mono-nerd-font
-```
-
-## ZSH Setup
-
-### Features
-
-<div class="grid cards" markdown>
-
-- [Oh My ZSH](https://ohmyz.sh/)
-- [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
-- [terminal-notifier](https://github.com/julienXX/terminal-notifier)
-- [autoupdate](https://github.com/TamCore/autoupdate-oh-my-zsh-plugins)
-- [fast-syntax-highlighting](https://github.com/zdharma-continuum/fast-syntax-highlighting)
-- [Powerlevel10k Theme](https://github.com/romkatv/powerlevel10k)
-
-</div>
-
-![https://raw.githubusercontent.com/romkatv/powerlevel10k-media/master/prompt-styles-high-contrast.png](https://raw.githubusercontent.com/romkatv/powerlevel10k-media/master/prompt-styles-high-contrast.png)
-
-### Step-By-Step Instructions
-
-1. Install Oh My ZSH:
-
-    ```shell
-    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    ```
-
-2. Restart iTerm
-3. Install powerlevel10k:
-
-    ```shell
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-    ```
-
-4. Edit `~/.zshrc`, set `ZSH_THEME="powerlevel10k/powerlevel10k"`
-5. Restart iTerm
-6. Follow setup directions from p10k
-7. Install terminal-notifier, required for the `bgnotify` Oh My ZSH plugin:
-
-    ```shell
-    brew install terminal-notifier
-    ```
-
-8. Install zsh-autosuggestions:
-
-    ```shell
-    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-    ```
-
-9. Install autoupdate:
-
-    ```shell
-    git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins $ZSH_CUSTOM/plugins/autoupdate
-    ```
-
-10. Install fast-syntax-highlighting:
-
-    ```shell
-    git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git \
-     ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
-    ```
-
-11. Edit `~/.zshrc`
-
-    1. Add the following lines to the end of the file:
-
-        ```shell
-        ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-        ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-        bgnotify_threshold=30
-        ```
-
-    2. Edit the `plugins` setting:
-
-        ```shell
-        plugins=(
-            autoupdate
-            aws
-            bgnotify
-            fast-syntax-highlighting
-            macos
-            terraform
-            safe-paste
-            zsh-autosuggestions
-        )
-        ```
-
-12. Install fzf for better history searching (ctrl-r):
-
-    ```shell
-    brew install fzf
-
-    # To install useful key bindings and fuzzy completion:
-    $(brew --prefix)/opt/fzf/install
-    ```
-
-### Optional: VS Code Settings
-
-VS Code users will need to add the following to their `settings.json`:
-
-```json
-"terminal.external.osxExec": "iTerm.app",
-"terminal.integrated.defaultProfile.osx": "zsh",
-"terminal.integrated.fontFamily": "MesloLGS Nerd Font Mono"
 ```

@@ -1,5 +1,4 @@
 ---
-status: new
 description: Useful notes for using and planning for IPv6.
 hide:
     - toc
