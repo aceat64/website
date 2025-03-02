@@ -1,6 +1,10 @@
 ---
 status: new
 description: Terminal and shell configuration.
+social:
+    cards_layout: default/only/image
+    cards_layout_options:
+        background_image: content/guides/terminal-and-shell-setup/social_card.png
 ---
 
 # Terminal & Shell Setup
