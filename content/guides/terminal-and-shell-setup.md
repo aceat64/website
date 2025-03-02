@@ -75,7 +75,28 @@ mkdir -p "$(bat --config-dir)/themes"
 wget -q -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme
 bat cache --build
 
-echo "Install zsh-syntax-highlighting theme"
+echo "Installing zsh-syntax-highlighting theme"
 mkdir -p ~/.config/catppuccin
 wget -q -P ~/.config/catppuccin https://github.com/catppuccin/zsh-syntax-highlighting/raw/main/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
+
+echo "Installing delta theme"
+wget -q -P ~/.config/catppuccin https://github.com/catppuccin/delta/raw/main/catppuccin.gitconfig
+```
+
+To use delta with git, update your `~/.gitconfig` with the following:
+
+```toml
+[interactive]
+    diffFilter = delta --color-only
+[include]
+    path = ~/.config/catppuccin/catppuccin.gitconfig
+[delta]
+    features = catppuccin-mocha
+    side-by-side = true
+    navigate = true    # use n and N to move between diff sections
+    dark = true
+[merge]
+    conflictstyle = zdiff3
+[diff]
+    colorMoved = default
 ```
