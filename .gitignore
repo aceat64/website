@@ -3,3 +3,4 @@
 site/
 .venv/
 website.egg-info/
+.DS_Store

@@ -23,11 +23,12 @@ I've started using [Mitchell Hashimoto's](https://mitchellh.com/) [Ghostty](http
 ```ini
 theme = catppuccin-mocha
 font-family = "MesloLGM Nerd Font Mono"
+keybind = global:cmd+grave_accent=toggle_quick_terminal
 ```
 
-!!! note
+Ghostty on macOS has a [Quick Terminal](https://ghostty.org/docs/features#macos), I've set a global keybinding of ++cmd+grave-accent++ so I can access it from anywhere.
 
-    Ghostty has [Nerd Fonts](https://www.nerdfonts.com/) built-in, so if you use another terminal emulator you will need to install the `Meslo` font yourself.
+![Ghossty quick terminal](terminal-and-shell-setup/quick_terminal.png){ loading=lazy }
 
 ### Optional: VS Code Settings
 
@@ -48,6 +49,10 @@ Required software:
 - [eza](https://github.com/eza-community/eza)
 - [bat](https://github.com/sharkdp/bat)
 - [fzf](https://github.com/junegunn/fzf)
+
+!!! note
+
+    Ghostty has [Nerd Fonts](https://www.nerdfonts.com/) built-in, so if you use another terminal emulator you will need to install the `Meslo` font yourself.
 
 ### Files
 
