@@ -1,0 +1,129 @@
+# Uncomment to profile startup times, be sure to add `zprof` at the end of this file
+# zmodload zsh/zprof
+
+# better command history
+HISTSIZE=10000
+SAVEHIST=$HISTSIZE
+HISTFILE=~/.zsh_history
+setopt histignoredups extendedhistory
+
+export PATH="$HOME/.local/bin:$PATH"
+
+eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/acecat.omp.toml)"
+
+# initialize completion system
+autoload -Uz compinit; compinit
+# Case-insensitve completion
+zstyle ':completion:*' matcher-list '+m:{a-zA-Z}={A-Za-z}'
+# Menu for selecting completions instead of just cycling through them
+zstyle ':completion:*' menu select
+
+# automatically escapes characters in unquoted URLs
+autoload -Uz url-quote-magic
+zle -N self-insert url-quote-magic
+# bracketed-paste-magic is required for url-quote-magic
+autoload -Uz bracketed-paste-magic
+zle -N bracketed-paste bracketed-paste-magic
+
+# This speeds up pasting w/ autosuggest
+# https://github.com/zsh-users/zsh-autosuggestions/issues/238
+pasteinit() {
+  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
+  zle -N self-insert url-quote-magic
+}
+pastefinish() {
+  zle -N self-insert $OLD_SELF_INSERT
+}
+zstyle :bracketed-paste-magic paste-init pasteinit
+zstyle :bracketed-paste-magic paste-finish pastefinish
+
+# bat config
+export BAT_THEME="Catppuccin Mocha"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+alias bathelp="bat --language=help --style=plain"
+alias -g -- --help="--help 2>&1 | bathelp"
+help() {
+  "$@" --help 2>&1 | bathelp
+}
+
+# fzf keybindings and fuzzy search
+source <(fzf --zsh)
+# catppuccin mocha theme for fzf
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+--color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+--color=selected-bg:#45475a \
+--multi"
+
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste)
+
+source ~/.config/catppuccin/catppuccin_mocha-zsh-syntax-highlighting.zsh
+
+case "$OSTYPE" in
+  darwin*)  SHARE_DIR="$(brew --prefix)/share";;
+  *)        SHARE_DIR="/usr/share";;
+esac
+source "$SHARE_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "$SHARE_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+# NodeJS (nvm)
+# NVM_DIR is used by nvm to know where its installed
+export NVM_DIR="$HOME/.nvm"
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+  . "$NVM_DIR/nvm.sh" --no-use # This loads nvm, without auto-using the default version
+fi
+
+# uv autocompletion
+if command -v uv > /dev/null; then
+  eval "$(uv generate-shell-completion zsh)"
+  eval "$(uvx --generate-shell-completion zsh)"
+fi
+
+# aliases & functions
+alias zls="zfs list -o type,name,available,used,logicalused,usedbysnapshots,compressratio,mountpoint"
+alias zsl="zfs list -t snapshot"
+alias s="ssh -l root"
+
+# use eza instead of ls
+alias ls="eza"
+alias l="eza --long --binary --classify=auto" # list, binary size, type indicator (e.g. `/` for dirs)
+alias ll="l --all" # list, all
+alias llm="ll --sort=modified" # list, all, sort by modification date
+alias lls="ll --sort=size" # list, all, sort by size
+alias la="eza -lbhHigUmuSa" # list, all, verbose
+alias lx="eza -lbhHigUmuSa@" # list, all, verbose, and xattrs
+alias tree="eza --tree" # tree
+alias lS="eza -1" # display one entry per line
+
+# get all kubernetes resources for a namespace
+kubectlgetall() {
+  if [ -z "$1" ]; then
+    echo "Usage: $0 <namespace>"
+    return 1
+  fi
+  for i in $(kubectl api-resources --verbs=list --namespaced -o name | grep -v "events.events.k8s.io" | grep -v "events" | sort | uniq); do
+    echo "Resource:" $i
+    kubectl -n ${1} get --ignore-not-found ${i}
+  done
+}
+
+# base64 decode that also works with base64url variant (no padding)
+b64d() {
+  local data=""
+  while IFS= read -r line || [ -n "$line" ]; do
+    data+="$line"
+  done
+  echo "${data}==" | base64 --decode
+}
+
+ytd() {
+  yt-dlp --cookies-from-browser=firefox \
+    --replace-in-metadata "uploader_id" "^@" "" \
+    --output "$HOME/Downloads/yt-dlp/%(uploader_id)s/%(extractor)s_%(display_id)s.%(ext)s" \
+    --embed-metadata \
+    --sponsorblock-mark all \
+    "$@"
+}

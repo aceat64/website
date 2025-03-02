@@ -13,13 +13,13 @@ This is my personal website, so all opinions are my own. I made it to better doc
 
 <div class="grid cards" markdown>
 
-- :fontawesome-brands-apple:{ .lg .middle } **Guide: macOS Setup**
+- :octicons-terminal-16:{ .lg .middle } **Guide: Terminal & Shell Setup**
 
     ---
 
-    Suggested programs, utilities and settings for developers getting started on Mac. Including my clean and lightweight combination of ZSH plugins and utilities.
+    My setup using Ghostty, zsh, Oh My Posh and a catppuccin-mocha style theme.
 
-    [:octicons-arrow-right-24: Read more](guides/macos-setup.md)
+    [:octicons-arrow-right-24: Read more](guides/terminal-and-shell-setup.md)
 
 - :material-home-battery:{ .lg .middle } **Project: Battery Backup**
 
