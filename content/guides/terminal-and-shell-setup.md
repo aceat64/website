@@ -46,6 +46,7 @@ Required software:
 - [Oh My Posh](https://ohmyposh.dev)
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
 - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+- [zsm-nvm](https://github.com/lukechilds/zsh-nvm)
 - [eza](https://github.com/eza-community/eza)
 - [bat](https://github.com/sharkdp/bat)
 - [fzf](https://github.com/junegunn/fzf)

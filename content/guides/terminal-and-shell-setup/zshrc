@@ -1,5 +1,9 @@
-# Uncomment to profile startup times, be sure to add `zprof` at the end of this file
-# zmodload zsh/zprof
+# Set ZSH_DEBUGRC to profile startup times, e.g.
+# time ZSH_DEBUGRC=1 zsh -i -c exit
+# https://www.dotruby.com/articles/profiling-zsh-setup-with-zprof
+if [[ -n "$ZSH_DEBUGRC" ]]; then
+  zmodload zsh/zprof
+fi
 
 # better command history
 HISTSIZE=10000
@@ -62,19 +66,20 @@ ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste)
 
 source ~/.config/catppuccin/catppuccin_mocha-zsh-syntax-highlighting.zsh
 
+# Brew should be setting HOMEBREW_PREFIX automatically via ~/.zprofile
 case "$OSTYPE" in
-  darwin*)  SHARE_DIR="$(brew --prefix)/share";;
+  darwin*)  SHARE_DIR="$HOMEBREW_PREFIX/share";;
   *)        SHARE_DIR="/usr/share";;
 esac
 source "$SHARE_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$SHARE_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # NodeJS (nvm)
-# NVM_DIR is used by nvm to know where its installed
-export NVM_DIR="$HOME/.nvm"
-if [ -s "$NVM_DIR/nvm.sh" ]; then
-  . "$NVM_DIR/nvm.sh" --no-use # This loads nvm, without auto-using the default version
-fi
+# Using zsh-nvm for lazy loading nvm
+# https://github.com/lukechilds/zsh-nvm
+export NVM_LAZY_LOAD=true
+export NVM_COMPLETION=true
+source ~/.zsh-nvm/zsh-nvm.plugin.zsh
 
 # uv autocompletion
 if command -v uv > /dev/null; then
@@ -127,3 +132,8 @@ ytd() {
     --sponsorblock-mark all \
     "$@"
 }
+
+# THIS MUST ALWAYS BE AT THE BOTTOM OF THIS FILE!
+if [[ -n "$ZSH_DEBUGRC" ]]; then
+  zprof
+fi
