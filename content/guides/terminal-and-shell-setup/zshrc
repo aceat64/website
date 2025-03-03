@@ -13,8 +13,6 @@ setopt histignoredups extendedhistory
 
 export PATH="$HOME/.local/bin:$PATH"
 
-eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/acecat.omp.toml)"
-
 # initialize completion system
 autoload -Uz compinit; compinit
 # Case-insensitve completion
@@ -79,7 +77,7 @@ source "$SHARE_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 # https://github.com/lukechilds/zsh-nvm
 export NVM_LAZY_LOAD=true
 export NVM_COMPLETION=true
-source ~/.zsh-nvm/zsh-nvm.plugin.zsh
+[ -f "~/.zsh-nvm/zsh-nvm.plugin.zsh" ] && source ~/.zsh-nvm/zsh-nvm.plugin.zsh
 
 # uv autocompletion
 if command -v uv > /dev/null; then
@@ -133,7 +131,8 @@ ytd() {
     "$@"
 }
 
-# THIS MUST ALWAYS BE AT THE BOTTOM OF THIS FILE!
+# THESE LINES MUST ALWAYS BE AT THE BOTTOM OF THIS FILE!
+eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/acecat.omp.toml)"
 if [[ -n "$ZSH_DEBUGRC" ]]; then
   zprof
 fi

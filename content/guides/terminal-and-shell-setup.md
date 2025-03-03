@@ -22,7 +22,7 @@ I've started using [Mitchell Hashimoto's](https://mitchellh.com/) [Ghostty](http
 
 ```ini
 theme = catppuccin-mocha
-font-family = "MesloLGM Nerd Font Mono"
+font-family = "MesloLGM Nerd Font"
 keybind = global:cmd+grave_accent=toggle_quick_terminal
 ```
 
@@ -36,7 +36,7 @@ VS Code users will need to add the following to their `settings.json`:
 
 ```json
 "terminal.external.osxExec": "Ghostty.app",
-"terminal.integrated.fontFamily": "MesloLGM Nerd Font Mono",
+"terminal.integrated.fontFamily": "MesloLGM Nerd Font",
 ```
 
 ## Z shell (zsh)
