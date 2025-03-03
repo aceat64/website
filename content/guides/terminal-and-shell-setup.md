@@ -44,6 +44,7 @@ VS Code users will need to add the following to their `settings.json`:
 Required software:
 
 - [Oh My Posh](https://ohmyposh.dev)
+- [ez-compinit](https://github.com/mattmc3/ez-compinit)
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
 - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 - [zsm-nvm](https://github.com/lukechilds/zsh-nvm)

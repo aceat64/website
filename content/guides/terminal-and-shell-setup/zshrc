@@ -13,12 +13,13 @@ setopt histignoredups extendedhistory
 
 export PATH="$HOME/.local/bin:$PATH"
 
-# initialize completion system
-autoload -Uz compinit; compinit
-# Case-insensitve completion
-zstyle ':completion:*' matcher-list '+m:{a-zA-Z}={A-Za-z}'
-# Menu for selecting completions instead of just cycling through them
-zstyle ':completion:*' menu select
+# faster way to initialize completion system, and some nice styles
+# https://github.com/mattmc3/ez-compinit
+# Available completion styles: gremlin, ohmy, prez, zshzoo
+# You can add your own too. To see all available completion styles
+# run 'compstyle -l'
+zstyle ':plugin:ez-compinit' 'compstyle' 'zshzoo'
+source ~/.zsh-ez-compinit/ez-compinit.plugin.zsh
 
 # automatically escapes characters in unquoted URLs
 autoload -Uz url-quote-magic
@@ -129,6 +130,12 @@ ytd() {
     --embed-metadata \
     --sponsorblock-mark all \
     "$@"
+}
+
+zshspeed() {
+  for i in $(seq 1 10); do
+    time zsh -i -c exit
+  done
 }
 
 # THESE LINES MUST ALWAYS BE AT THE BOTTOM OF THIS FILE!
