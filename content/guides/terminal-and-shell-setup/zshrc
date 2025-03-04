@@ -63,8 +63,14 @@ ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste)
 source ~/.local/share/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
-source ~/.local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Brew should be setting HOMEBREW_PREFIX automatically via ~/.zprofile
+case "$OSTYPE" in
+  darwin*)  SHARE_DIR="$HOMEBREW_PREFIX/share";;
+  *)        SHARE_DIR="~/.local/share";;
+esac
+source "$SHARE_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "$SHARE_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # NodeJS (nvm)
 # Using zsh-nvm for lazy loading nvm

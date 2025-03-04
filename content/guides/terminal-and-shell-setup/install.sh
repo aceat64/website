@@ -11,6 +11,9 @@ REQUIRED_PROGRAMS=(
   eza
   oh-my-posh
 )
+
+[[ "$OSTYPE" == darwin* ]] && REQUIRED_PROGRAMS+=(brew)
+
 MISSING_PROGRAMS=()
 
 # Check each command
@@ -31,13 +34,18 @@ fi
   (grep -q "^skip_global_compinit=1$" ~/.zshenv 2>/dev/null || \
   (echo "skip_global_compinit=1" >> ~/.zshenv && echo "Updated ~/.zshenv"))
 
+
 echo "Installing plugins to ~/.local/share"
 ZSH_PLUGINS=(
   mattmc3/ez-compinit
-  zsh-users/zsh-syntax-highlighting
-  zsh-users/zsh-autosuggestions
   lukechilds/zsh-nvm
 )
+if [[ "$OSTYPE" == darwin* ]]; then
+  # On macOS I prefer installing these using brew
+  brew install zsh-autosuggestions zsh-syntax-highlighting
+else
+  ZSH_PLUGINS+=(zsh-users/zsh-syntax-highlighting zsh-users/zsh-autosuggestions)
+fi
 for REPO in "${ZSH_PLUGINS[@]}"; do
   echo "$REPO"
   git clone --depth 1 "https://github.com/$REPO" "$HOME/.local/share/$(basename "$REPO")" >/dev/null
