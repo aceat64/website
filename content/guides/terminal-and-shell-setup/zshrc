@@ -19,7 +19,7 @@ export PATH="$HOME/.local/bin:$PATH"
 # You can add your own too. To see all available completion styles
 # run 'compstyle -l'
 zstyle ':plugin:ez-compinit' 'compstyle' 'zshzoo'
-source ~/.zsh-ez-compinit/ez-compinit.plugin.zsh
+source ~/.local/share/ez-compinit/ez-compinit.plugin.zsh
 
 # automatically escapes characters in unquoted URLs
 autoload -Uz url-quote-magic
@@ -62,23 +62,16 @@ export FZF_DEFAULT_OPTS=" \
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste)
-
-source ~/.config/catppuccin/catppuccin_mocha-zsh-syntax-highlighting.zsh
-
-# Brew should be setting HOMEBREW_PREFIX automatically via ~/.zprofile
-case "$OSTYPE" in
-  darwin*)  SHARE_DIR="$HOMEBREW_PREFIX/share";;
-  *)        SHARE_DIR="/usr/share";;
-esac
-source "$SHARE_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh"
-source "$SHARE_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source ~/.local/share/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
+source ~/.local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # NodeJS (nvm)
 # Using zsh-nvm for lazy loading nvm
 # https://github.com/lukechilds/zsh-nvm
 export NVM_LAZY_LOAD=true
 export NVM_COMPLETION=true
-[ -f ~/.zsh-nvm/zsh-nvm.plugin.zsh ] && source ~/.zsh-nvm/zsh-nvm.plugin.zsh
+[ -f ~/.local/share/zsh-nvm/zsh-nvm.plugin.zsh ] && source ~/.local/share/zsh-nvm/zsh-nvm.plugin.zsh
 
 # uv autocompletion
 if command -v uv > /dev/null; then
@@ -139,7 +132,7 @@ zshspeed() {
 }
 
 # THESE LINES MUST ALWAYS BE AT THE BOTTOM OF THIS FILE!
-eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/acecat.omp.toml)"
+eval "$(oh-my-posh init zsh --config ~/.local/share/themes/acecat.omp.toml)"
 if [[ -n "$ZSH_DEBUGRC" ]]; then
   zprof
 fi

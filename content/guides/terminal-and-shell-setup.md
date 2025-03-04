@@ -43,20 +43,46 @@ VS Code users will need to add the following to their `settings.json`:
 
 Required software:
 
-- [Oh My Posh](https://ohmyposh.dev)
-- [ez-compinit](https://github.com/mattmc3/ez-compinit)
-- [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
-- [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
-- [zsh-nvm](https://github.com/lukechilds/zsh-nvm)
-- [eza](https://github.com/eza-community/eza)
 - [bat](https://github.com/sharkdp/bat)
+- [eza](https://github.com/eza-community/eza)
 - [fzf](https://github.com/junegunn/fzf)
+- [Oh My Posh](https://ohmyposh.dev)
+
+=== ":simple-apple: macOS"
+
+    ```shell
+    brew install bat eza fzf jandedobbeleer/oh-my-posh/oh-my-posh
+    ```
+
+=== ":simple-linux: Linux"
+
+    For `bat`, `eza`, and `fzf` most distros have recent enough versions, use your package manager.
+
+    You'll need to install `oh-my-posh` using their script:
+
+    ```shell
+    curl -s https://ohmyposh.dev/install.sh | bash -s
+    ```
 
 !!! note
 
     Ghostty has [Nerd Fonts](https://www.nerdfonts.com/) built-in, so if you use another terminal emulator you will need to install the `Meslo` font yourself.
 
+### Automatic Install
+
+```shell
+curl -s https://lickthesalt.com/guides/terminal-and-shell-setup/install.sh | bash -s
+```
+
 ### Files
+
+Here are the files, if you just want to look at them instead of running my install script.
+
+??? example "install.sh"
+
+    ```shell
+    --8<-- "content/guides/terminal-and-shell-setup/install.sh"
+    ```
 
 ??? example "zshrc"
 
@@ -70,25 +96,7 @@ Required software:
     --8<-- "content/guides/terminal-and-shell-setup/acecat.omp.toml"
     ```
 
-### Theme Installer
-
-```shell
-echo "Downloading acecat theme for oh-my-posh"
-mkdir -p ~/.config/ohmyposh
-wget -q -P ~/.config/ohmyposh https://lickthesalt.com/guides/terminal-and-shell-setup/acecat.omp.toml
-
-echo "Installing bat theme"
-mkdir -p "$(bat --config-dir)/themes"
-wget -q -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme
-bat cache --build
-
-echo "Installing zsh-syntax-highlighting theme"
-mkdir -p ~/.config/catppuccin
-wget -q -P ~/.config/catppuccin https://github.com/catppuccin/zsh-syntax-highlighting/raw/main/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
-
-echo "Installing delta theme"
-wget -q -P ~/.config/catppuccin https://github.com/catppuccin/delta/raw/main/catppuccin.gitconfig
-```
+### Finishing Touches
 
 To use delta with git, update your `~/.gitconfig` with the following:
 
@@ -96,7 +104,7 @@ To use delta with git, update your `~/.gitconfig` with the following:
 [interactive]
     diffFilter = delta --color-only
 [include]
-    path = ~/.config/catppuccin/catppuccin.gitconfig
+    path = ~/.local/share/themes/catppuccin.gitconfig
 [delta]
     features = catppuccin-mocha
     side-by-side = true
