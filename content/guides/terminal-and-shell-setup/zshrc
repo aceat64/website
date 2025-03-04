@@ -78,7 +78,7 @@ source "$SHARE_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 # https://github.com/lukechilds/zsh-nvm
 export NVM_LAZY_LOAD=true
 export NVM_COMPLETION=true
-[ -f "~/.zsh-nvm/zsh-nvm.plugin.zsh" ] && source ~/.zsh-nvm/zsh-nvm.plugin.zsh
+[ -f ~/.zsh-nvm/zsh-nvm.plugin.zsh ] && source ~/.zsh-nvm/zsh-nvm.plugin.zsh
 
 # uv autocompletion
 if command -v uv > /dev/null; then
