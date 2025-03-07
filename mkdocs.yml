@@ -1,5 +1,5 @@
-site_name: Lick The Salt
-site_url: https://lickthesalt.com/
+site_name: Andrew LeCody
+site_url: https://andrew.lecody.com/
 docs_dir: content
 nav:
   - About: index.md
@@ -18,11 +18,8 @@ nav:
       - smart-home/switches.md
   - Projects:
       - projects/battery-backup.md
-      - projects/jeep.md
   - Literary:
       - literary/recommended-reading.md
-  - Blog:
-      - blog/index.md
 extra:
   social:
     - icon: fontawesome/brands/bluesky
@@ -36,8 +33,6 @@ extra:
 copyright: This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 plugins:
   - meta
-  - blog:
-      authors: false
   - search
   - social
   - optimize

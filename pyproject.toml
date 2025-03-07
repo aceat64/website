@@ -1,7 +1,7 @@
 [project]
 name = "website"
 version = "0.1.0"
-description = "https://lickthesalt.com"
+description = "https://andrew.lecody.com"
 authors = [{name = "Andrew LeCody"}]
 readme = "README.md"
 license = {file = "LICENSE"}
