@@ -19,9 +19,9 @@ These are the least used status codes. In practice, you'll probably never see th
 
 ## 2xx - Success
 
-Congratulations! Your request worked, *probably*. Some applications will give you a `2xx` status code, and then in the body of the response have an error message. I've often seen this as json with something like this:
+Congratulations! Your request worked, _probably_. Some applications will give you a `2xx` status code, and then in the body of the response have an error message. I've often seen this as json with something like this:
 
-``` json
+```json
 {
     "success": false,
     "message": "Hah, I bet you thought your request worked. Sucker."
@@ -88,15 +88,15 @@ When you (the client) did something wrong, the server will typically return a `4
 
 ### 400 - Bad Request
 
-Your request was bad. If you're lucky the body might tell you *why* it was bad.
+Your request was bad. If you're lucky the body might tell you _why_ it was bad.
 
 ### 401 - Unauthorized
 
-This actually means *unauthenticated*, as in you didn't give the server any information about who you are.
+This actually means _unauthenticated_, as in you didn't give the server any information about who you are.
 
 ### 403 - Forbidden
 
-You are *unauthorized*. The server knows who you are, you just aren't allowed in. Yeah, this isn't confusing at all.
+You are _unauthorized_. The server knows who you are, you just aren't allowed in. Yeah, this isn't confusing at all.
 
 <!-- ### 404 - Not Found -->
 
@@ -158,7 +158,7 @@ Slow down, you hit a rate limit.
 
 ### 451 - Unavailable For Legal Reasons
 
-You get it? Because in the book Fahrenheit 451 they burned books. It's *very* clever and funny, unlike `418`.
+You get it? Because in the book Fahrenheit 451 they burned books. It's _very_ clever and funny, unlike `418`.
 
 ## 5xx - Server Error
 

@@ -8,11 +8,11 @@ hide:
 
 This site is built using [Material for MkDocs Insiders](https://squidfunk.github.io/mkdocs-material/insiders/), the sponsorware version of Material for MkDocs, which includes a number of features not in the publically available version. Notable features used by this site are:
 
-* [Blog plugin](https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/)
-* [Privacy plugin](https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#built-in-privacy-plugin)
-* [Grid cards](https://squidfunk.github.io/mkdocs-material/reference/grids/#using-card-grids)
-* [Automatic light / dark mode](https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#automatic-light-dark-mode)
-* [Rich search previews](https://squidfunk.github.io/mkdocs-material/blog/2021/09/13/search-better-faster-smaller/#rich-search-previews)
+- [Blog plugin](https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/)
+- [Privacy plugin](https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#built-in-privacy-plugin)
+- [Grid cards](https://squidfunk.github.io/mkdocs-material/reference/grids/#using-card-grids)
+- [Automatic light / dark mode](https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#automatic-light-dark-mode)
+- [Rich search previews](https://squidfunk.github.io/mkdocs-material/blog/2021/09/13/search-better-faster-smaller/#rich-search-previews)
 
 ## Getting Started
 
@@ -22,7 +22,7 @@ If you are on macOS, check out my guide on [macOS Setup](macos-setup.md) to get 
 
 ### Project Setup
 
-``` yaml title="pyproject.toml"
+```yaml title="pyproject.toml"
 [project]
 name = "website"
 version = "0.1.0"
@@ -43,7 +43,7 @@ There are a lot of great guides out there on building a site with MkDocs so I wo
 
 Since `mkdocs` was installed via `uv`, you'll need to call it with `uv run mkdocs`. For example, to run the development server:
 
-``` shell
+```shell
 poetry run mkdocs serve
 ```
 
@@ -55,7 +55,7 @@ If you haven't already, go into the settings for you GitHub repo and enable Page
 
 All that's left now is to configure a workflow to build and publish the site. Place the following file in your repo, commit your changes, push to GitHub and sit back!
 
-``` yaml title=".github/workflows/pages.yaml"
+```yaml title=".github/workflows/pages.yaml"
 name: Pages
 on:
   push:

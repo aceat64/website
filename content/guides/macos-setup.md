@@ -269,7 +269,7 @@ curl -sSL https://install.python-poetry.org | python3 -
 
 If you chose to install `pyenv`, I suggest enabling this option so that Poetry will default to the active/global version of Python:
 
-``` shell
+```shell
 poetry config virtualenvs.prefer-active-python true
 ```
 
@@ -325,7 +325,7 @@ _<https://prettier.io/>_
 
 ### hadolint
 
- Dockerfile linter, validate inline bash, written in Haskell.
+Dockerfile linter, validate inline bash, written in Haskell.
 
 ```shell
 brew install hadolint
@@ -337,7 +337,7 @@ _<https://github.com/hadolint/hadolint>_
 
 ### dive
 
- A tool for exploring each layer in a docker image.
+A tool for exploring each layer in a docker image.
 
 ```shell
 brew install dive
