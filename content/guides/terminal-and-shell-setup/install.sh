@@ -53,7 +53,7 @@ done
 
 echo "Installing themes to ~/.local/share/themes"
 THEME_URLS=(
-  https://lickthesalt.com/guides/terminal-and-shell-setup/acecat.omp.toml
+  https://andrew.lecody.com/guides/terminal-and-shell-setup/acecat.omp.toml
   https://github.com/catppuccin/zsh-syntax-highlighting/raw/main/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
   https://github.com/catppuccin/delta/raw/main/catppuccin.gitconfig
 )
@@ -71,4 +71,4 @@ wget -q -c https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.
 bat cache --build
 
 [ -f ~/.zshrc ] && mv ~/.zshrc ~/.zshrc-"$(date +%s)"
-curl -s https://lickthesalt.com/guides/terminal-and-shell-setup/zshrc > ~/.zshrc
+curl -s https://andrew.lecody.com/guides/terminal-and-shell-setup/zshrc > ~/.zshrc

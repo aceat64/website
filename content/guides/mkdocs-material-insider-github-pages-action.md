@@ -1,5 +1,5 @@
 ---
-description: Guide to deploy a static site using Material for MkDocs Insiders on GitHub Pages using Poetry and GitHub Actions
+description: Guide to deploy a static site using Material for MkDocs Insiders on GitHub Pages using uv and GitHub Actions
 hide:
     - toc
 ---
@@ -16,98 +16,32 @@ This site is built using [Material for MkDocs Insiders](https://squidfunk.github
 
 ## Getting Started
 
-You will need Python 3.10 (I strongly recommend using [pyenv](https://github.com/pyenv/pyenv)), [Poetry](https://python-poetry.org/) and a GitHub repository. If you are on macOS, check out my guide on [macOS Setup](macos-setup.md) to get your development environment up and running.
+This guide assumes that you have already installed [uv](https://docs.astral.sh/uv/), made a GitHub repo and cloned it to your local system. For the Insiders version you will need to be able to [clone repos with HTTPS URLs](https://docs.github.com/en/get-started/git-basics/about-remote-repositories#cloning-with-https-urls), some IDEs like [VS Code](https://code.visualstudio.com/) handle it for you automatically.
 
-### Poetry Init
+If you are on macOS, check out my guide on [macOS Setup](macos-setup.md) to get your development environment up and running.
 
-First you need to create a `pyproject.toml` file, which will define the packages uses for building the site. This can be done interactively by running `poetry init` in the base folder of your repo.
+### Project Setup
 
-``` shell
-poetry init
-```
-
-The output should look something like below. Don't define your dependencies interactively, you'll setup a GitHub token in later steps which will let us access the Insiders repo. For the rest of the prompts, the defaults are typically good enough.
-
-``` shell
-$ poetry init
-
-This command will guide you through creating your pyproject.toml config.
-
-Package name [website-test]:  
-Version [0.1.0]:  
-Description []:  
-Author [Andrew LeCody <andrewlecody@gmail.com>, n to skip]:  
-License []:  
-Compatible Python versions [^3.10]:  
-
-Would you like to define your main dependencies interactively? (yes/no) [yes] no
-Would you like to define your development dependencies interactively? (yes/no) [yes] no
-Generated file
-
-[tool.poetry]
-name = "website-test"
+``` yaml title="pyproject.toml"
+[project]
+name = "website"
 version = "0.1.0"
-description = ""
-authors = ["Andrew LeCody <andrewlecody@gmail.com>"]
-readme = "README.md"
-packages = [{include = "website_test"}]
+requires-python = ">=3.12"
+dependencies = [
+    "mkdocs-material[imaging]",
+    "mkdocs-minify-plugin>=0.8.0",
+]
 
-[tool.poetry.dependencies]
-python = "^3.10"
+[tool.uv.sources]
+mkdocs-material = { git = "https://github.com/squidfunk/mkdocs-material-insiders" }
 
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
-
-
-Do you confirm generation? (yes/no) [yes]
-```
-
-### GitHub Token
-
-You need to create a Personal Access Token and set it as the environment variable `$GH_TOKEN`.
-
-1. Go to <https://github.com/settings/tokens>
-2. Click on "Generate a new token" in the top right.
-3. Enter a name for your token and set the expiration. You'll have to generate a new token once this one expires.
-4. Select just the `repo` scope.
-5. Generate the token, on the next page you need to copy the token (it should start with `ghp_`).
-6. Edit the settings file for your shell (`~/.bashrc` or `~/.zshrc`)
-
-    ``` shell
-    export GH_TOKEN="paste_token_here"
-    ```
-
-7. Reload your shell (or just run that `export` command) so that the `$GH_TOKEN` environment variable is active.
-8. You can verify the variable is loaded by running `echo $GH_TOKEN`, if your token appears, you are ready to continue.
-
-### Configure Poetry
-
-Poetry needs to be told how to access the Insiders repo, using the GitHub token you generated.
-
-```shell
-poetry config repositories.github-squidfunk-mkdocs https://github.com/squidfunk/mkdocs-material-insiders.git
-poetry config http-basic.github-squidfunk-mkdocs username $GH_TOKEN
-```
-
-Now you are ready to install Material for MkDocs Insiders.
-
-``` shell
-poetry add git+https://github.com/squidfunk/mkdocs-material-insiders.git
-```
-
-This is optional, but I install some additional packages. I use the minify plugin to shrink the built HTML files, while Pillow and CairoSVG are needed for the social media cards.
-
-``` shell
-poetry add mkdocs-minify-plugin Pillow CairoSVG
 ```
 
 ### Build Your Site
 
 There are a lot of great guides out there on building a site with MkDocs so I won't get into it. Feel free to check out my repo on GitHub to see how I have this site setup: <https://github.com/aceat64/website>
 
-Since mkdocs was installed via Poetry, you'll need to call it with `poetry run mkdocs`. For example, to run the development server:
+Since `mkdocs` was installed via `uv`, you'll need to call it with `uv run mkdocs`. For example, to run the development server:
 
 ``` shell
 poetry run mkdocs serve
@@ -122,5 +56,82 @@ If you haven't already, go into the settings for you GitHub repo and enable Page
 All that's left now is to configure a workflow to build and publish the site. Place the following file in your repo, commit your changes, push to GitHub and sit back!
 
 ``` yaml title=".github/workflows/pages.yaml"
---8<-- ".github/workflows/pages.yaml"
+name: Pages
+on:
+  push:
+    branches:
+      - main
+  # workflow_dispatch allows the site to be rebuilt and published manually if needed
+  workflow_dispatch:
+
+# Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+permissions:
+  pages: write # to deploy to Pages
+  id-token: write # to verify the deployment originates from an appropriate source
+
+# Prevent the action from running multiple times in parallel
+concurrency: pages-build-and-deploy
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # Running this action on a fork will likely fail anyway
+    # unless the forked repo also has access to material for mkdocs insiders
+    if: github.event.repository.fork == false
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: sudo apt-get install pngquant
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version-file: 'pyproject.toml'
+
+      - uses: astral-sh/setup-uv@v5
+
+      # Insiders is the sponsorware version of Material for MkDocs
+      # https://squidfunk.github.io/mkdocs-material/insiders/
+      - name: Configure auth for Insiders
+        run: |
+          echo "https://github:${{ secrets.GH_TOKEN }}@github.com" >> $HOME/.git-credentials
+          git config --global credential.helper store
+
+      - name: Install the project
+        run: uv sync --all-extras --dev
+
+      # The .cache directory is used for 3rd party assets, as part of the privacy plugin.
+      # It is also used to cache the generated social media cards.
+      # Persisting the cache across builds dramatically speeds up the process.
+      - name: Load site cache
+        uses: actions/cache@v4
+        with:
+          key: mkdocs
+          path: .cache
+
+      - name: Build site
+        run: uv run mkdocs build
+
+      # Upload the built site as an artifact, this will be used by the deploy job.
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: "site"
+
+      - name: Minimize uv cache
+        run: uv cache prune --ci
+  deploy:
+    needs: build
+
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    # Specify runner + deployment step
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
 ```

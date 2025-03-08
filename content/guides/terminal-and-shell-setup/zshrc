@@ -131,6 +131,12 @@ ytd() {
     "$@"
 }
 
+jitter() {
+  local secs=$(( ( RANDOM % 60 ) + 1 ))
+  echo "sleep for $secs seconds..."
+  sleep "$secs"
+}
+
 zshspeed() {
   for i in $(seq 1 10); do
     time zsh -i -c exit

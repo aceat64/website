@@ -7,14 +7,9 @@ readme = "README.md"
 license = {file = "LICENSE"}
 classifiers = ["Framework :: MkDocs"]
 requires-python = ">=3.12"
-
-[tool.uv]
-dev-dependencies = [
+dependencies = [
     "mkdocs-material[imaging]",
     "mkdocs-minify-plugin>=0.8.0",
-    "pillow>=10.4.0",
-    "cairosvg>=2.7.1",
-    "pngquant>=1.0.8",
 ]
 
 [tool.uv.sources]

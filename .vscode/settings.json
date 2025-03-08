@@ -1,7 +1,9 @@
 {
-  "search.exclude": {
-    "**/.cache": true,
+  "files.exclude": {
     "**/.venv": true,
+    "**/.cache": true
+  },
+  "search.exclude": {
     "**/site": true,
     "**/uv.lock": true
   },

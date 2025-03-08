@@ -71,7 +71,7 @@ Required software:
 ### Automatic Install
 
 ```shell
-curl -s https://lickthesalt.com/guides/terminal-and-shell-setup/install.sh | bash -s
+curl -s https://andrew.lecody.com/guides/terminal-and-shell-setup/install.sh | bash -s
 ```
 
 ### Files

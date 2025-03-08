@@ -1,0 +1,64 @@
+name: Pages
+on:
+  push:
+    branches:
+      - main
+  # workflow_dispatch allows the site to be rebuilt and published manually if needed
+  workflow_dispatch:
+
+# Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+permissions:
+  pages: write # to deploy to Pages
+  id-token: write # to verify the deployment originates from an appropriate source
+
+# Prevent the action from running multiple times in parallel
+concurrency: pages-build-and-deploy
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # Running this action on a fork will likely fail anyway
+    # unless the forked repo also has access to material for mkdocs insiders
+    if: github.event.repository.fork == false
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: sudo apt-get install pngquant
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version-file: 'pyproject.toml'
+
+      - uses: astral-sh/setup-uv@v5
+
+      # Insiders is the sponsorware version of Material for MkDocs
+      # https://squidfunk.github.io/mkdocs-material/insiders/
+      - name: Configure auth for Insiders
+        run: |
+          echo "https://github:${{ secrets.GH_TOKEN }}@github.com" >> $HOME/.git-credentials
+          git config --global credential.helper store
+
+      - name: Install the project
+        run: uv sync --all-extras --dev
+
+      # The .cache directory is used for 3rd party assets, as part of the privacy plugin.
+      # It is also used to cache the generated social media cards.
+      # Persisting the cache across builds dramatically speeds up the process.
+      - name: Load site cache
+        uses: actions/cache@v4
+        with:
+          key: mkdocs
+          path: .cache
+
+      - name: Build site
+        run: uv run mkdocs build
+
+      # Upload the built site as an artifact, this will be used by the deploy job.
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: "site"
+
+      - name: Minimize uv cache
+        run: uv cache prune --ci
