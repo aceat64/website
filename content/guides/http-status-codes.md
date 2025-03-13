@@ -92,11 +92,11 @@ Your request was bad. If you're lucky the body might tell you _why_ it was bad.
 
 ### 401 - Unauthorized
 
-This actually means _unauthenticated_, as in you didn't give the server any information about who you are.
+This actually means _unauthenticated_, as in you didn't give the server any information about who you are. The server "MUST" send a `WWW-Authenticate` header telling you what type of authentication mechanism was expected. Not every system actually returns this required header, which is very cool. ([ref](https://www.rfc-editor.org/rfc/rfc9110#status.401))
 
 ### 403 - Forbidden
 
-You are _unauthorized_. The server knows who you are, you just aren't allowed in. Yeah, this isn't confusing at all.
+You are _unauthorized_. The server knows who you are, you just aren't allowed in. Or you didn't send credentials and the server should have given you a `401` (but maybe didn't know what to put for the `WWW-Authenticate` header). Yeah, this isn't confusing at all. ([ref](https://www.rfc-editor.org/rfc/rfc9110#status.403))
 
 <!-- ### 404 - Not Found -->
 
