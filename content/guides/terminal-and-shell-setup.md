@@ -56,13 +56,21 @@ Required software:
 
 === ":simple-linux: Linux"
 
-    For `bat`, `eza`, and `fzf` most distros have recent enough versions, use your package manager.
+    Some distros have recent enough versions of `bat`, `eza`, and `fzf`, so you can just use your package manager to install them. For Debian/Ubuntu, I wrote a script to do a system-wide install for you:
 
-    You'll need to install `oh-my-posh` using their script:
+    ```shell
+    curl -s https://andrew.lecody.com/guides/terminal-and-shell-setup/prep_debian.sh | bash -s
+    ```
+
+    The script can be run again to upgrade `bat`, `eza`, and `fzf` to the latest versions. Please note, it has to be run as root and only works on `x86_64`/`amd64` because that's all I needed for now. If you want to improve it, please send me a [pull request](https://github.com/aceat64/website/pulls).
+
+    Next, you'll need to install `oh-my-posh` using their script:
 
     ```shell
     curl -s https://ohmyposh.dev/install.sh | bash -s
     ```
+
+    This script can also be run again for upgrades.
 
 !!! note
 
@@ -82,6 +90,12 @@ Here are the files, if you just want to look at them instead of running my insta
 
     ```shell
     --8<-- "content/guides/terminal-and-shell-setup/install.sh"
+    ```
+
+??? example "prep_debian.sh"
+
+    ```shell
+    --8<-- "content/guides/terminal-and-shell-setup/prep_debian.sh"
     ```
 
 ??? example "zshrc"

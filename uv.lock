@@ -321,8 +321,8 @@ wheels = [
 
 [[package]]
 name = "mkdocs-material"
-version = "9.6.7+insiders.4.53.15"
-source = { git = "https://github.com/squidfunk/mkdocs-material-insiders#573ea60dc618719bff3897a4fdae22ab2cd725e8" }
+version = "9.6.9+insiders.4.53.16"
+source = { git = "https://github.com/squidfunk/mkdocs-material-insiders#224a8a307de800eca85207f6889cc4bb3e06a4ba" }
 dependencies = [
     { name = "babel" },
     { name = "backrefs" },
