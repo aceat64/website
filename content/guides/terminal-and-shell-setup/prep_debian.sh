@@ -26,7 +26,7 @@ done
 
 # If any commands are missing, list them and exit
 if [ ${#MISSING_PROGRAMS[@]} -ne 0 ]; then
-  echo "${BOLD_RED}Error:${RESET} Missing required programs:"
+  echo -e "${BOLD_RED}Error:${RESET} Missing required programs:"
   printf '%s\n' "${MISSING_PROGRAMS[@]}"
   exit 1
 fi
@@ -34,20 +34,20 @@ fi
 # Check if the distribution is Debian or Ubuntu
 DISTRO=$(lsb_release --id --short)
 if [[ "${DISTRO}" != "Debian" && "${DISTRO}" != "Ubuntu" ]]; then
-    echo "${BOLD_YELLOW}Sorry, this script only works for Debian/Ubuntu${RESET}"
+    echo -e "${BOLD_YELLOW}Sorry, this script only works for Debian/Ubuntu${RESET}"
     exit 1
 fi
 
 # Check if this is an x86_64 system
-ARCH=$(uname --hardware-platform)
+ARCH=$(uname --machine)
 if [[ "${ARCH}" != "x86_64" ]]; then
-    echo "${BOLD_YELLOW}Sorry, this script only works for x86_64${RESET}"
+    echo -e "${BOLD_YELLOW}Sorry, this script only works for x86_64${RESET}"
     exit 1
 fi
 
 # Check if we're root
 if [ "$(id -u)" -ne 0 ]; then
-    echo "${BOLD_YELLOW}This script must be run as root, you trust me, right?${RESET}" >&2
+    echo -e "${BOLD_YELLOW}This script must be run as root, you trust me, right?${RESET}" >&2
     exit 1
 fi
 
@@ -65,7 +65,7 @@ get_latest_github_release() {
 
     # Check if the API call was successful
     if [[ "${LATEST_VERSION}" == "null" || -z "${LATEST_VERSION}" ]]; then
-        echo "${BOLD_RED}Error:${RESET} Could not fetch the latest release for ${REPO}" >&2
+        echo -e "${BOLD_RED}Error:${RESET} Could not fetch the latest release for ${REPO}" >&2
         return 1
     fi
 
