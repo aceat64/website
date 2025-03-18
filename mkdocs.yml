@@ -29,7 +29,7 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/aceat64
     - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/in/andrew-lecody-37307148/
+      link: https://www.linkedin.com/in/andrew-lecody
 copyright: This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 plugins:
   - meta
