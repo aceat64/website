@@ -43,6 +43,7 @@ plugins:
   - git-revision-date-localized:
       enable_creation_date: true
       type: timeago
+      locale: en_US
   - typeset
   - meta
   - search
@@ -92,6 +93,7 @@ theme:
   name: material
   icon:
     logo: material/wifi-strength-alert-outline
+  custom_dir: content/overrides
   features:
     - navigation.instant
     - navigation.instant.prefetch

@@ -1,4 +1,5 @@
 ---
+priority: 0.6
 icon: octicons/code-16
 description: A comical explanation of various HTTP status codes.
 ---

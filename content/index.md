@@ -1,4 +1,5 @@
 ---
+priority: 1.0
 hide:
     - navigation
     - toc
