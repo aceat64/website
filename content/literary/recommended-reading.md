@@ -1,3 +1,7 @@
+---
+icon: material/book
+---
+
 # Recommended Reading
 
 These are some of the books I recommend reading. I prefer buying physical books from indepenant/local book stores and from online retailers/publishers that offer DRM-free ebooks. If you have to ask Amazon before you open a book, you don't own that book, Amazon does.
@@ -12,12 +16,12 @@ The "Manga Guide" series is a great way to learn about various topics from datab
 
 ## Engineering
 
-* [Engineering in Plain Sight](https://nostarch.com/engineering-plain-sight) by Grady Hillhouse of [Practical Engineering](https://www.youtube.com/c/PracticalEngineeringChannel) on YouTube.
+- [Engineering in Plain Sight](https://nostarch.com/engineering-plain-sight) by Grady Hillhouse of [Practical Engineering](https://www.youtube.com/c/PracticalEngineeringChannel) on YouTube.
 
 ## Sci-Fi
 
-* Literally anything by [qntm](https://qntm.org) (Sam Hughes), and all of it is available online for free.
-    * [There Is No Antimemetics Division](https://qntm.org/scp) - Set in the world of the [SCP Foundation wiki](https://scp-wiki.wikidot.com/). It explores the concept of antimemes, ideas with self-censoring properties.
-    * [Ra](https://qntm.org/ra) - Magic as science/engineering, think "magic NASA".
-    * [Fine Structure](https://qntm.org/structure) - The first thing I ever read from qntm, I have been a fan ever since.
-    * [Ed](https://qntm.org/ed) - Hilarious and over the top mad science. Who doesn't like giant robot battles?
+- Literally anything by [qntm](https://qntm.org) (Sam Hughes), and all of it is available online for free.
+    - [There Is No Antimemetics Division](https://qntm.org/scp) - Set in the world of the [SCP Foundation wiki](https://scp-wiki.wikidot.com/). It explores the concept of antimemes, ideas with self-censoring properties.
+    - [Ra](https://qntm.org/ra) - Magic as science/engineering, think "magic NASA".
+    - [Fine Structure](https://qntm.org/structure) - The first thing I ever read from qntm, I have been a fan ever since.
+    - [Ed](https://qntm.org/ed) - Hilarious and over the top mad science. Who doesn't like giant robot battles?

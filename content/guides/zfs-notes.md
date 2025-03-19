@@ -1,4 +1,5 @@
 ---
+icon: simple/openzfs
 description: Various notes about my usage of ZFS/OpenZFS.
 ---
 
@@ -27,6 +28,7 @@ zfs set atime=off worldsgrave
 ### De-Duplication
 
 !!! warning "De-Duplication"
+
     **NEVER** use de-dupe, it's a massive performance hit.
 
 ## Scheduled Scrubing
@@ -97,7 +99,7 @@ zfs list -t snapshot
 
 ### Aliases
 
-``` shell
+```shell
 alias zls="zfs list -o type,name,available,used,logicalused,usedbysnapshots,compressratio,mountpoint"+
 alias zsl="zfs list -t snapshot"
 ```

@@ -1,10 +1,18 @@
 ---
+status: deprecated
+icon: simple/nginxproxymanager
 description: Use your UDM-Pro as an HTTP proxy for multiple sites/services.
 ---
 
 # Nginx Proxy Manager on UDM-Pro
 
-<https://nginxproxymanager.com/>
+!!! quote deprecated "Deprecated"
+
+    Upgrades can sometimes break this setup, which I found annoying.
+    
+    I suggest using the [Nginx Proxy Manager Add-On](https://github.com/hassio-addons/addon-nginx-proxy-manager) with Home Assistant.
+
+[:simple-nginxproxymanager: Nginx Proxy Manager](https://nginxproxymanager.com){ .md-button }
 
 ## Credits
 
@@ -20,7 +28,7 @@ description: Use your UDM-Pro as an HTTP proxy for multiple sites/services.
 - In your UniFi Network controller, create `proxymanager` network (vlan 6, 10.0.6.1/24, no DHCP).
 - Create directories:
 
-    ``` shell
+    ```shell
     mkdir -p /mnt/data/proxymanager/data /mnt/data/proxymanager/letsencrypt
     ```
 
@@ -32,25 +40,19 @@ description: Use your UDM-Pro as an HTTP proxy for multiple sites/services.
         {
             "cniVersion": "0.4.0",
             "name": "proxymanager",
-            "plugins": [
-                {
+            "plugins": [{
                 "type": "macvlan",
                 "mode": "bridge",
                 "master": "br6",
                 "ipam": {
                     "type": "static",
-                    "addresses": [
-                    {
+                    "addresses": [{
                         "address": "10.0.6.4/24",
                         "gateway": "10.0.6.1"
-                    }
-                    ],
-                    "routes": [
-                    {"dst": "0.0.0.0/0"}
-                    ]
+                    }],
+                    "routes": [{"dst": "0.0.0.0/0"}]
                 }
-                }
-            ]
+            }]
         }
         ```
 
@@ -58,7 +60,7 @@ description: Use your UDM-Pro as an HTTP proxy for multiple sites/services.
 
     ??? example "20-proxymanager.sh"
 
-        ``` shell
+        ```shell
         #!/bin/sh
 
         ## configuration variables
@@ -112,7 +114,7 @@ description: Use your UDM-Pro as an HTTP proxy for multiple sites/services.
 
 - Run the following commands:
 
-    ``` shell
+    ```shell
     chmod +x /mnt/data/on_boot.d/20-proxymanager.sh
     /mnt/data/on_boot.d/20-proxymanager.sh
     /mnt/data/on_boot.d/05-install-cni-plugins.sh
@@ -122,14 +124,14 @@ description: Use your UDM-Pro as an HTTP proxy for multiple sites/services.
 
     ```shell
     podman run -d \
-    --systemd=false \
-    --network proxymanager \
-    --name proxymanager \
-    -e TZ=America/Chicago \
-    -e DB_SQLITE_FILE="/data/database.sqlite" \
-    -v "/mnt/data/proxymanager/data:/data" \
-    -v "/mnt/data/proxymanager/letsencrypt:/etc/letsencrypt" \
-    jc21/nginx-proxy-manager:latest
+        --systemd=false \
+        --network proxymanager \
+        --name proxymanager \
+        -e TZ=America/Chicago \
+        -e DB_SQLITE_FILE="/data/database.sqlite" \
+        -v "/mnt/data/proxymanager/data:/data" \
+        -v "/mnt/data/proxymanager/letsencrypt:/etc/letsencrypt" \
+        jc21/nginx-proxy-manager:latest
     ```
 
 If everything worked the Nginx Proxy Manager interface should be available at <http://10.0.6.4:81>

@@ -16,7 +16,7 @@ updates:
       interval: "daily"
     reviewers:
       - "aceat64"
-  - package-ecosystem: "pip"
+  - package-ecosystem: "uv"
     insecure-external-code-execution: allow
     directory: "/"
     registries:

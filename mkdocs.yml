@@ -1,5 +1,10 @@
 site_name: Andrew LeCody
 site_url: https://andrew.lecody.com/
+site_author: Andrew LeCody
+site_description: This is my personal website, so all opinions are my own. I made it to better document some of the helpful information I've compiled about a wide variety of topics, but also to show off some of the projects I've done that I think are neat.
+repo_url: https://github.com/aceat64/website
+repo_name: aceat64/website
+edit_uri: edit/main/content
 docs_dir: content
 nav:
   - About: index.md
@@ -21,6 +26,9 @@ nav:
   - Literary:
       - literary/recommended-reading.md
 extra:
+  status:
+    new: Recently added
+    deprecated: This content is old/outdated and will be removed in the near future.
   social:
     - icon: fontawesome/brands/bluesky
       link: https://bsky.app/profile/andrewlecody.bsky.social
@@ -32,13 +40,20 @@ extra:
       link: https://www.linkedin.com/in/andrew-lecody
 copyright: This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 plugins:
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
+  - typeset
   - meta
   - search
-  - social
+  - social:
+      cards_layout: default/variant
   - optimize
   - minify:
       minify_html: true
-  - privacy
+  - privacy:
+      links_attr_map:
+        target: _blank
 markdown_extensions:
   # Python Markdown
   - abbr
@@ -51,6 +66,7 @@ markdown_extensions:
       permalink: true
 
   # Python Markdown Extensions
+  - pymdownx.blocks.caption
   - pymdownx.details
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
@@ -78,11 +94,18 @@ theme:
     logo: material/wifi-strength-alert-outline
   features:
     - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.prune
     - navigation.tracking
     - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.top
     - content.code.copy
     - content.code.select
+    - content.action.edit
+    - content.action.view
+    - toc.follow
   palette:
     # Palette toggle for automatic mode
     - media: "(prefers-color-scheme)"
@@ -107,4 +130,4 @@ theme:
         icon: material/brightness-4
         name: Switch to system preference
 extra_css:
-  - stylesheets/tables.css
+  - stylesheets/extra.css

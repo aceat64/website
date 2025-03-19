@@ -1,4 +1,5 @@
 ---
+icon: octicons/code-16
 description: A comical explanation of various HTTP status codes.
 ---
 

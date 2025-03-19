@@ -1,4 +1,13 @@
+---
+status: deprecated
+icon: material/garage-lock
+---
+
 # Garage Door
+
+!!! quote deprecated "Deprecated"
+
+    I no longer use this setup and have moved over to using [Paul Wieland's](https://github.com/PaulWieland) [ratgdo](https://paulwieland.github.io/ratgdo/) device.
 
 ## Materials
 
@@ -6,12 +15,11 @@
 - [Adafruit Non-Latching Mini Relay FeatherWing](https://www.adafruit.com/product/2895)
 - Magnetic door sensor or reed switch. Some examples:
     - [Magnetic contact switch (door sensor)](https://www.adafruit.com/product/375)
-    - [Heavy Duty Wired Alarm Garage Door Magnetic Contacts Switch Sensor NC with Adjustable
-Bracket](https://www.amazon.com/Magnetic-Contacts-Shutter-Adjustable-Bracket/dp/B07ZBT28L8)
+    - [Heavy Duty Wired Alarm Garage Door Magnetic Contacts Switch Sensor NC with Adjustable Bracket](https://www.amazon.com/Magnetic-Contacts-Shutter-Adjustable-Bracket/dp/B07ZBT28L8)
 
 ## ESPHome config
 
-``` yaml
+```yaml
 substitutions:
   device_name: garage-door
   friendly_name: Garage Door

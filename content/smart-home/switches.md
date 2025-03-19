@@ -1,10 +1,21 @@
+---
+status: deprecated
+icon: material/light-switch
+---
+
 # Light/Fan Switches
+
+!!! quote deprecated "Deprecated"
+
+    These switches are still in use at our old house, but going forward I am now using Leviton's Decora Smart Wi-Fi Dimmer (2nd Gen). With an upgrade to a newer firmware these switches support [Matter](https://www.home-assistant.io/integrations/matter) connectivity.
+
+    That's pretty neat.
 
 In our house, all of the light and fan switches are "Martin Jerry Smart Switches", as they use the common Tuya module, which is really just an esp8266 board. Perfect for reflashing and running ESPHome on!
 
 ## Switch
 
-``` yaml
+```yaml
 substitutions:
   device_name: hall-bath-light
   friendly_name: Hall Bath Light
@@ -33,6 +44,7 @@ api:
     key: "xxxxxx"
 
 ota:
+  platform: esphome
   password: !secret ota_password
 
 wifi:
@@ -92,7 +104,7 @@ binary_sensor:
 
 ## Dimmer
 
-``` yaml
+```yaml
 # Based on: https://github.com/mjoshd/esphome_martin-jerry-mj-sd01-dimmer/blob/master/martin_jerry_mj_sd01_dimmer.yaml
 substitutions:
   device_name: hall-light
@@ -130,6 +142,7 @@ api:
     key: "xxxxxx"
 
 ota:
+  platform: esphome
   password: !secret ota_password
 
 wifi:

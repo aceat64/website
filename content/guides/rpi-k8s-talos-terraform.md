@@ -1,4 +1,5 @@
 ---
+icon: simple/kubernetes
 description: Build a Kubernetes cluster with Raspberry Pi, Talos and Terraform.
 ---
 

@@ -1,6 +1,7 @@
 ---
 status: new
-description: Terminal and shell configuration.
+icon: octicons/terminal-16
+description: Terminal and shell configuration, using Ghostty, zsh and my own personalized theme.
 social:
     cards_layout: default/only/image
     cards_layout_options:

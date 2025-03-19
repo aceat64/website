@@ -1,1 +1,5 @@
+---
+icon: simple/homeassistant
+---
+
 # Architecture

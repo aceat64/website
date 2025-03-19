@@ -1,4 +1,5 @@
 ---
+icon: simple/apple
 description: My personal setup on macOS for development work.
 ---
 

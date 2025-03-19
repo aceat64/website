@@ -1,0 +1,6 @@
+overrides:
+  - files: "*.md"
+    options:
+      parser: markdown
+      tabWidth: 4
+      embeddedLanguageFormatting: off

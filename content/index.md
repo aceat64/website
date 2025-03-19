@@ -1,8 +1,8 @@
 ---
 hide:
-  - navigation
-  - toc
-  - footer
+    - navigation
+    - toc
+    - footer
 ---
 
 # About The Site
@@ -15,7 +15,7 @@ This is my personal website, so all opinions are my own. I made it to better doc
 
 - :octicons-terminal-16:{ .lg .middle } **Guide: Terminal & Shell Setup**
 
-    ---
+    ***
 
     My setup using Ghostty, zsh, Oh My Posh and a catppuccin-mocha style theme.
 
@@ -23,15 +23,15 @@ This is my personal website, so all opinions are my own. I made it to better doc
 
 - :material-home-battery:{ .lg .middle } **Project: Battery Backup**
 
-    ---
+    ***
 
     After being without power for a week, I built a ~13kwh battery backup system to cover the most important circuits in our house (fridge, network and _some_ HVAC).
 
     [:octicons-arrow-right-24: Details](projects/battery-backup.md)
 
-- :material-home-assistant:{ .lg .middle } **Smart Home: Architecture**
+- :simple-homeassistant:{ .lg .middle } **Smart Home: Architecture**
 
-    ---
+    ***
 
     A general overview of my smart home setup, powered by [Home Assistant](https://www.home-assistant.io/).
 
