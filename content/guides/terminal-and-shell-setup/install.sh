@@ -78,7 +78,7 @@ mkdir -p "$BAT_THEMES_DIR"
 wget -q -c https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme -O "$BAT_THEMES_DIR/Catppuccin Mocha.tmTheme"
 bat cache --build
 
-curl -s https://andrew.lecody.com/guides/terminal-and-shell-setup/generate_completions.zsh > ~/.local/bin/generate_completions
+curl -s https://andrew.lecody.com/guides/terminal-and-shell-setup/generate_completions > ~/.local/bin/generate_completions
 chmod +x ~/.local/bin/generate_completions
 
 [ -f ~/.zshrc ] && mv ~/.zshrc ~/.zshrc-"$(date +%s)"
