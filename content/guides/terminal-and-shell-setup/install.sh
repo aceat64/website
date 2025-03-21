@@ -55,7 +55,7 @@ for REPO in "${ZSH_PLUGINS[@]}"; do
     git pull
     cd -
   else
-    git clone --depth 1 "https://github.com/$REPO"  >/dev/null
+    git clone --depth 1 "https://github.com/$REPO" "${DIRECTORY}" >/dev/null
   fi
 done
 
