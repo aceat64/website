@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -e
 
@@ -30,10 +30,11 @@ if [ ${#MISSING_PROGRAMS[@]} -ne 0 ]; then
   exit 1
 fi
 
+# Some systems will call compinit before evaluating ~/.zshrc and we don't want that.
+# On these systems we need to add "skip_global_compinit=1" to ~/.zshenv
 [ -f /etc/zsh/zshrc ] && grep -q "skip_global_compinit=1" /etc/zsh/zshrc && \
   (grep -q "^skip_global_compinit=1$" ~/.zshenv 2>/dev/null || \
   (echo "skip_global_compinit=1" >> ~/.zshenv && echo "Updated ~/.zshenv"))
-
 
 echo "Installing plugins to ~/.local/share"
 ZSH_PLUGINS=(
@@ -48,7 +49,14 @@ else
 fi
 for REPO in "${ZSH_PLUGINS[@]}"; do
   echo "$REPO"
-  git clone --depth 1 "https://github.com/$REPO" "$HOME/.local/share/$(basename "$REPO")" >/dev/null
+  DIRECTORY="$HOME/.local/share/$(basename "$REPO")"
+  if [ -d "${DIRECTORY}" ]; then
+    cd "${DIRECTORY}"
+    git pull
+    cd -
+  else
+    git clone --depth 1 "https://github.com/$REPO"  >/dev/null
+  fi
 done
 
 echo "Installing themes to ~/.local/share/themes"
@@ -70,5 +78,20 @@ mkdir -p "$BAT_THEMES_DIR"
 wget -q -c https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme -O "$BAT_THEMES_DIR/Catppuccin Mocha.tmTheme"
 bat cache --build
 
+curl -s https://andrew.lecody.com/guides/terminal-and-shell-setup/generate_completions.zsh > ~/.local/bin/generate_completions
+chmod +x ~/.local/bin/generate_completions
+
 [ -f ~/.zshrc ] && mv ~/.zshrc ~/.zshrc-"$(date +%s)"
 curl -s https://andrew.lecody.com/guides/terminal-and-shell-setup/zshrc > ~/.zshrc
+
+[ -f ~/.zsh_aliases ] && mv ~/.zsh_aliases ~/.zsh_aliases-"$(date +%s)"
+curl -s https://andrew.lecody.com/guides/terminal-and-shell-setup/zsh_aliases > ~/.zsh_aliases
+
+[ -f ~/.zsh_functions ] && mv ~/.zsh_functions ~/.zsh_functions-"$(date +%s)"
+curl -s https://andrew.lecody.com/guides/terminal-and-shell-setup/zsh_functions > ~/.zsh_functions
+
+echo "Testing the zsh setup, you may see nvm get setup during this."
+zsh -i -c 'exit'
+
+echo "Generating completion files, this avoids having to generate them each time we start a session."
+~/.local/bin/generate_completions

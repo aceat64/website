@@ -1,0 +1,6 @@
+# ZFS
+alias zls="zfs list -o type,name,available,used,logicalused,usedbysnapshots,compressratio,mountpoint"
+alias zsl="zfs list -t snapshot"
+
+# SSH
+alias s="ssh -l root"

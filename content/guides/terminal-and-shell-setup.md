@@ -106,6 +106,18 @@ Here are the files, if you just want to look at them instead of running my insta
     --8<-- "content/guides/terminal-and-shell-setup/zshrc"
     ```
 
+??? example "zsh_aliases"
+
+    ```shell
+    --8<-- "content/guides/terminal-and-shell-setup/zsh_aliases"
+    ```
+
+??? example "zsh_functions"
+
+    ```shell
+    --8<-- "content/guides/terminal-and-shell-setup/zsh_functions"
+    ```
+
 ??? example "acecat Oh-My-Posh Theme"
 
     ```shell

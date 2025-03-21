@@ -1,3 +1,7 @@
+# Notes:
+#   Some files/programs are considered REQUIRED, so I intentionally do not check for their existence before sourcing/loading.
+#   This will make it make it immediately obvious when something is missing, instead of features randomly not working.
+
 # Set ZSH_DEBUGRC to profile startup times, e.g.
 # time ZSH_DEBUGRC=1 zsh -i -c exit
 # https://www.dotruby.com/articles/profiling-zsh-setup-with-zprof
@@ -42,12 +46,15 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 
 # bat config
 export BAT_THEME="Catppuccin Mocha"
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+# use bat for viewing man pages
+export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
+# helpful aliases/functions for using bat
 alias bathelp="bat --language=help --style=plain"
-alias -g -- --help="--help 2>&1 | bathelp"
 help() {
   "$@" --help 2>&1 | bathelp
 }
+# TODO: make this work with commands like `curl --help all`
+# alias -g -- --help="--help 2>&1 | bathelp"
 
 # fzf keybindings and fuzzy search
 source <(fzf --zsh)
@@ -59,9 +66,12 @@ export FZF_DEFAULT_OPTS=" \
 --color=selected-bg:#45475a \
 --multi"
 
+# zsh-autosuggest config
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste)
+
+# catppuccin theme for zsh-syntax-highlighting
 source ~/.local/share/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
 
 # Brew should be setting HOMEBREW_PREFIX automatically via ~/.zprofile
@@ -79,17 +89,6 @@ export NVM_LAZY_LOAD=true
 export NVM_COMPLETION=true
 [ -f ~/.local/share/zsh-nvm/zsh-nvm.plugin.zsh ] && source ~/.local/share/zsh-nvm/zsh-nvm.plugin.zsh
 
-# uv autocompletion
-if command -v uv > /dev/null; then
-  eval "$(uv generate-shell-completion zsh)"
-  eval "$(uvx --generate-shell-completion zsh)"
-fi
-
-# aliases & functions
-alias zls="zfs list -o type,name,available,used,logicalused,usedbysnapshots,compressratio,mountpoint"
-alias zsl="zfs list -t snapshot"
-alias s="ssh -l root"
-
 # use eza instead of ls
 alias ls="eza"
 alias l="eza --long --binary --classify=auto" # list, binary size, type indicator (e.g. `/` for dirs)
@@ -101,41 +100,9 @@ alias lx="eza -lbhHigUmuSa@" # list, all, verbose, and xattrs
 alias tree="eza --tree" # tree
 alias lS="eza -1" # display one entry per line
 
-# get all kubernetes resources for a namespace
-kubectlgetall() {
-  if [ -z "$1" ]; then
-    echo "Usage: $0 <namespace>"
-    return 1
-  fi
-  for i in $(kubectl api-resources --verbs=list --namespaced -o name | grep -v "events.events.k8s.io" | grep -v "events" | sort | uniq); do
-    echo "Resource:" $i
-    kubectl -n ${1} get --ignore-not-found ${i}
-  done
-}
-
-# base64 decode that also works with base64url variant (no padding)
-b64d() {
-  local data=""
-  while IFS= read -r line || [ -n "$line" ]; do
-    data+="$line"
-  done
-  echo "${data}==" | base64 --decode
-}
-
-ytd() {
-  yt-dlp --cookies-from-browser=firefox \
-    --replace-in-metadata "uploader_id" "^@" "" \
-    --output "$HOME/Downloads/yt-dlp/%(uploader_id)s/%(extractor)s_%(display_id)s.%(ext)s" \
-    --embed-metadata \
-    --sponsorblock-mark all \
-    "$@"
-}
-
-jitter() {
-  local secs=$(( ( RANDOM % 60 ) + 1 ))
-  echo "sleep for $secs seconds..."
-  sleep "$secs"
-}
+# load our aliases and functions
+[ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
+[ -f ~/.zsh_functions ] && source ~/.zsh_functions
 
 zshspeed() {
   for i in $(seq 1 10); do

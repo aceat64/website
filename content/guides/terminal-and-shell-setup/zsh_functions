@@ -1,0 +1,43 @@
+# get all kubernetes resources for a namespace
+kubectlgetall() {
+  if [ -z "$1" ]; then
+    echo "Usage: $0 <namespace>"
+    return 1
+  fi
+  for i in $(kubectl api-resources --verbs=list --namespaced -o name | grep -v "events.events.k8s.io" | grep -v "events" | sort | uniq); do
+    echo "Resource:" $i
+    kubectl -n ${1} get --ignore-not-found ${i}
+  done
+}
+
+# base64 decode that also works with base64url variant (no padding)
+b64d() {
+  local data=""
+  while IFS= read -r line || [ -n "$line" ]; do
+    data+="$line"
+  done
+  echo "${data}==" | base64 --decode
+}
+
+# nextcloud
+occ() {
+  NEXTCLOUD_POD_NAME=$(kubectl get pod -n cosmoknots -l app.kubernetes.io/name=nextcloud -o jsonpath='{.items[0].metadata.name}')
+  kubectl exec -n cosmoknots $NEXTCLOUD_POD_NAME -c nextcloud -i -t -- sudo -u '#33' PHP_MEMORY_LIMIT=512M /var/www/html/occ "$@"
+}
+
+# yt-dlp
+# https://github.com/yt-dlp/yt-dlp
+ytd() {
+  yt-dlp --cookies-from-browser=firefox \
+    --replace-in-metadata "uploader_id" "^@" "" \
+    --output "$HOME/Downloads/yt-dlp/%(uploader_id)s/%(extractor)s_%(display_id)s.%(ext)s" \
+    --embed-metadata \
+    --sponsorblock-mark all \
+    "$@"
+}
+
+jitter() {
+  local secs=$(( ( RANDOM % 60 ) + 1 ))
+  echo "sleep for $secs seconds..."
+  sleep "$secs"
+}

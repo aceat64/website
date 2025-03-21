@@ -1,0 +1,26 @@
+#!/usr/bin/env -S zsh -i
+
+GREY='\033[0;30m'
+BG_BLUE='\033[44m'
+RESET='\033[0m'
+
+# Declare an associative array
+typeset -A PROGRAMS
+
+PROGRAMS=(
+    "kubectl"   "kubectl completion zsh"
+    "helm"      "helm completion zsh"
+    "uv"        "uv generate-shell-completion zsh"
+    "uvx"       "uvx --generate-shell-completion zsh"
+)
+
+for PROGRAM_NAME GENERATE_CMD in "${(@kv)PROGRAMS}"; do
+    echo "Checking for ${PROGRAM_NAME}"
+    if command -v "${PROGRAM_NAME}" &> /dev/null; then
+        FILENAME="${fpath[1]}/_${PROGRAM_NAME}"
+        echo "${BG_BLUE}  FOUND ${PROGRAM_NAME}  ${RESET}"
+        echo "Command: ${GREY}${GENERATE_CMD}${RESET}"
+        echo "File: ${GREY}${FILENAME}${RESET}"
+        eval "${GENERATE_CMD} > ${FILENAME}"
+    fi
+done
