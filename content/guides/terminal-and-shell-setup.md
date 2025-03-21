@@ -118,6 +118,12 @@ Here are the files, if you just want to look at them instead of running my insta
     --8<-- "content/guides/terminal-and-shell-setup/zsh_functions"
     ```
 
+??? example "generate_completions"
+
+    ```shell
+    --8<-- "content/guides/terminal-and-shell-setup/generate_completions"
+    ```
+
 ??? example "acecat Oh-My-Posh Theme"
 
     ```shell
