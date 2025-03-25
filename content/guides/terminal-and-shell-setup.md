@@ -64,7 +64,7 @@ Required software:
     curl -s https://andrew.lecody.com/guides/terminal-and-shell-setup/prep_debian.sh | bash -s
     ```
 
-    The script can be run again to upgrade `bat`, `eza`, and `fzf` to the latest versions. Please note, it has to be run as root and only works on `x86_64`/`amd64` because that's all I needed for now. If you want to improve it, please send me a [pull request](https://github.com/aceat64/website/pulls).
+    The script can be run again to upgrade `bat`, `eza`, and `fzf` to the latest versions. Please note, it has to be run as root. If you want to improve it, please send me a [pull request](https://github.com/aceat64/website/pulls).
 
     Next, you'll need to install `oh-my-posh` using their script:
 

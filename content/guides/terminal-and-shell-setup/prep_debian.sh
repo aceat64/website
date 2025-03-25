@@ -13,6 +13,7 @@ RESET='\033[0m'
 REQUIRED_PROGRAMS=(
   curl
   lsb_release
+  jq
 )
 
 MISSING_PROGRAMS=()
@@ -40,10 +41,13 @@ fi
 
 # Check if this is an x86_64 system
 ARCH=$(uname --machine)
-if [[ "${ARCH}" != "x86_64" ]]; then
-    echo -e "${BOLD_YELLOW}Sorry, this script only works for x86_64${RESET}"
+case "$ARCH" in
+  x86_64)  ARCH_ALT="amd64";;
+  aarch64) ARCH_ALT="arm64";;
+  *)
+    echo -e "${BOLD_YELLOW}Sorry, this script only works for x86_64 (amd64) and aarch64 (arm64)${RESET}"
     exit 1
-fi
+esac
 
 # Check if we're root
 if [ "$(id -u)" -ne 0 ]; then
@@ -95,7 +99,7 @@ install_eza() {
 
     # Download and extract the files to a tmp directory
     TMPDIR=$(mktemp --directory)
-    curl -s -L "https://github.com/eza-community/eza/releases/download/v${VERSION}/eza_x86_64-unknown-linux-gnu.tar.gz" | tar -C "${TMPDIR}" -zxf -
+    curl -s -L "https://github.com/eza-community/eza/releases/download/v${VERSION}/eza_${ARCH}-unknown-linux-gnu.tar.gz" | tar -C "${TMPDIR}" -zxf -
     curl -s -L "https://github.com/eza-community/eza/releases/download/v${VERSION}/completions-${VERSION}.tar.gz" | tar -C "${TMPDIR}" -zxf -
     curl -s -L "https://github.com/eza-community/eza/releases/download/v${VERSION}/man-${VERSION}.tar.gz" | tar -C "${TMPDIR}" -zxf -
 
@@ -136,7 +140,7 @@ install_fzf() {
 
     # Download and extract the file to a tmp directory
     TMPDIR=$(mktemp --directory)
-    curl -s -L "https://github.com/junegunn/fzf/releases/download/v${VERSION}/fzf-${VERSION}-linux_amd64.tar.gz" | tar -C "${TMPDIR}" -zxf -
+    curl -s -L "https://github.com/junegunn/fzf/releases/download/v${VERSION}/fzf-${VERSION}-linux_${ARCH_ALT}.tar.gz" | tar -C "${TMPDIR}" -zxf -
 
     # Install the file
     echo -e "${GREY}"
@@ -171,12 +175,12 @@ install_bat() {
 
     # Download and extract the file to a tmp directory
     TMPDIR=$(mktemp --directory)
-    curl -s -L "https://github.com/sharkdp/bat/releases/download/v${VERSION}/bat_${VERSION}_amd64.deb" > "${TMPDIR}/bat_${VERSION}_amd64.deb"
+    curl -s -L "https://github.com/sharkdp/bat/releases/download/v${VERSION}/bat_${VERSION}_${ARCH_ALT}.deb" > "${TMPDIR}/bat_${VERSION}_${ARCH_ALT}.deb"
 
     # Install the package
     echo -e "${GREY}"
     set -x
-    dpkg --install "${TMPDIR}/bat_${VERSION}_amd64.deb"
+    dpkg --install "${TMPDIR}/bat_${VERSION}_${ARCH_ALT}.deb"
     rm -rf "${TMPDIR}"
     set +x
     echo -e "${RESET}"
