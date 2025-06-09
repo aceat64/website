@@ -40,6 +40,7 @@ echo "Installing plugins to ~/.local/share"
 ZSH_PLUGINS=(
   mattmc3/ez-compinit
   lukechilds/zsh-nvm
+  rupa/z
 )
 if [[ "$OSTYPE" == darwin* ]]; then
   # On macOS I prefer installing these using brew

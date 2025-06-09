@@ -16,6 +16,7 @@ HISTFILE=~/.zsh_history
 setopt histignoredups extendedhistory
 
 export PATH="$HOME/.local/bin:$PATH"
+. $HOME/.local/share/z/z.sh
 
 # faster way to initialize completion system, and some nice styles
 # https://github.com/mattmc3/ez-compinit
