@@ -15,7 +15,7 @@ updates:
     schedule:
       interval: daily
     reviewers: [aceat64]
-    labels: [deps]
+    labels: [dependencies]
     groups:
       actions:
         patterns: ["*"]
@@ -27,7 +27,7 @@ updates:
     schedule:
       interval: daily
     reviewers: [aceat64]
-    labels: [deps]
+    labels: [dependencies]
     # groups:
     #   development-dependencies:
     #     dependency-type: development
