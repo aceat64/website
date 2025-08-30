@@ -22,16 +22,16 @@ jobs:
     if: github.event.repository.fork == false
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
 
       - name: Install dependencies
         run: sudo apt-get install pngquant
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version-file: 'pyproject.toml'
 
-      - uses: astral-sh/setup-uv@v6
+      - uses: astral-sh/setup-uv@4959332f0f014c5280e7eac8b70c90cb574c9f9b # v6
 
       # Insiders is the sponsorware version of Material for MkDocs
       # https://squidfunk.github.io/mkdocs-material/insiders/
@@ -47,7 +47,7 @@ jobs:
       # It is also used to cache the generated social media cards.
       # Persisting the cache across builds dramatically speeds up the process.
       - name: Load site cache
-        uses: actions/cache@v4
+        uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809 # v4
         with:
           key: mkdocs
           path: .cache
@@ -56,7 +56,7 @@ jobs:
         run: uv run mkdocs build
 
       # Upload the built site as an artifact, this will be used by the deploy job.
-      - uses: actions/upload-pages-artifact@v4
+      - uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
         with:
           path: "site"
 
