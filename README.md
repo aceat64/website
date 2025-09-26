@@ -1,5 +1,7 @@
 # About The Site
 
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
+
 This is my personal website, so all opinions are my own. I made it to better document some of the helpful information I've compiled about a wide variety of topics, but also to show off some of the projects I've done that I think are neat.
 
 ## Development

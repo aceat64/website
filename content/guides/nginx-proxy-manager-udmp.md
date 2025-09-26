@@ -9,7 +9,7 @@ description: Use your UDM-Pro as an HTTP proxy for multiple sites/services.
 !!! quote deprecated "Deprecated"
 
     Upgrades can sometimes break this setup, which I found annoying.
-    
+
     I suggest using the [Nginx Proxy Manager Add-On](https://github.com/hassio-addons/addon-nginx-proxy-manager) with Home Assistant.
 
 [:simple-nginxproxymanager: Nginx Proxy Manager](https://nginxproxymanager.com){ .md-button }

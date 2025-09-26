@@ -11,6 +11,7 @@ dependencies = [
     "mkdocs-git-revision-date-localized-plugin>=1.4.5",
     "mkdocs-material[imaging]",
     "mkdocs-minify-plugin>=0.8.0",
+    "pre-commit>=4.3.0",
 ]
 
 [tool.uv.sources]

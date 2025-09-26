@@ -2,6 +2,8 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:best-practices",
-    "security:openssf-scorecard"
-  ]
+    "security:openssf-scorecard",
+    "group:allNonMajor"
+  ],
+  "abandonmentThreshold": "2 years"
 }

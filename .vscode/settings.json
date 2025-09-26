@@ -11,6 +11,9 @@
   "yaml.schemas": {
     "https://squidfunk.github.io/mkdocs-material/schema.json": "mkdocs.yml"
   },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
   "yaml.customTags": [
     "!ENV scalar",
     "!ENV sequence",
@@ -24,7 +27,7 @@
       "indent": 4
     },
     "no-inline-html": false,
-    "code-block-style": false,
+    "code-block-style": false
   },
   "sarif-viewer.connectToGithubCodeScanning": "off"
 }
