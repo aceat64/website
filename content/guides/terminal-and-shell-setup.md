@@ -23,7 +23,7 @@ I've started using [Mitchell Hashimoto's](https://mitchellh.com/) [Ghostty](http
 ### Configuration
 
 ```ini
-theme = catppuccin-mocha
+theme = Catppuccin Mocha
 font-family = "MesloLGM Nerd Font"
 keybind = global:cmd+grave_accent=toggle_quick_terminal
 ```

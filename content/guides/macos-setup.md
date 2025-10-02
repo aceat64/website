@@ -213,23 +213,35 @@ _<https://github.com/pyenv/pyenv>_
 
 ### NodeJS (nvm)
 
-Once the install completes, be sure to follow the instructions provided and add the required lines to your ~/.zhsrc file.
+!!! note
+
+    I know prefer using the zsh plugin [zsh-nvm](https://github.com/lukechilds/zsh-nvm), which is installed automatically if you use my guide on [Terminal & Shell Setup](terminal-and-shell-setup.md).
 
 ```shell
-brew install nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
 ```
+
+??? example "Alternative install method: brew"
+
+    ```shell
+    brew install nvm
+    ```
+
+    Once the install completes, be sure to follow the instructions provided and add the required lines to your ~/.zhsrc file.
 
 _<https://github.com/nvm-sh/nvm>_
 
 ---
 
-### Terraform (tfenv)
+### OpenTofu/Terraform (tenv)
 
 ```shell
-brew install tfenv
+brew install tenv
 ```
 
-_<https://github.com/tfutils/tfenv>_
+_<https://github.com/tofuutils/tenv>_
+
+---
 
 ## Developer Tools
 

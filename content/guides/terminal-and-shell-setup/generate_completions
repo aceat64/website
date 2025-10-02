@@ -1,4 +1,5 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env -S zsh -i
+# We need zsh to run as an interactive shell (-i)
 # shellcheck disable=SC1071
 
 GREY='\033[0;30m'
@@ -13,6 +14,7 @@ PROGRAMS=(
     "helm"      "helm completion zsh"
     "uv"        "uv generate-shell-completion zsh"
     "uvx"       "uvx --generate-shell-completion zsh"
+    "tenv"      "tenv completion zsh"
 )
 
 for PROGRAM_NAME GENERATE_CMD in "${(@kv)PROGRAMS}"; do
