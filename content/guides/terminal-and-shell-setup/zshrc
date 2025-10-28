@@ -90,6 +90,8 @@ export NVM_LAZY_LOAD=true
 export NVM_COMPLETION=true
 [ -f ~/.local/share/zsh-nvm/zsh-nvm.plugin.zsh ] && source ~/.local/share/zsh-nvm/zsh-nvm.plugin.zsh
 
+eval "$(atuin init zsh)"
+
 # use eza instead of ls
 alias ls="eza"
 alias l="eza --long --binary --classify=auto" # list, binary size, type indicator (e.g. `/` for dirs)
