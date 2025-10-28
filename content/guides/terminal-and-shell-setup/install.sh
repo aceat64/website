@@ -6,6 +6,7 @@ REQUIRED_PROGRAMS=(
   wget
   curl
   git
+  atuin
   bat
   fzf
   eza
