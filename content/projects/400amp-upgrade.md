@@ -1,5 +1,7 @@
 ---
+status: new
 icon: material/power-plug-battery-outline
+description: Upgrading the electrical service for our home from 100A to 400A! Includes battery backup and prep for solar panels.
 ---
 
 # 400 Amp Electrical Upgrade
