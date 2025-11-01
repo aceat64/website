@@ -4,6 +4,8 @@ icon: material/power-plug-battery-outline
 
 # 400 Amp Electrical Upgrade
 
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/videoseries?si=OEi2P9iBzgF4Pr1Z&amp;list=PLIxOsQj0SNoHhOJQMfSanrUpOVrKlCcSu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 - Existing service is 100A, by overhead line, meter on the house.
 - New service is 400A, delivered at the edge of the property at a meter pedestal.
 - Meter pedestal has 2x 200A breakers, one for the house and one for the workshop.
