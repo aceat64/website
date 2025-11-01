@@ -22,6 +22,7 @@ nav:
       - smart-home/garage-door.md
       - smart-home/switches.md
   - Projects:
+      - projects/400amp-upgrade.md
       - projects/battery-backup.md
   - Literary:
       - literary/recommended-reading.md

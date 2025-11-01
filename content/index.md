@@ -22,13 +22,15 @@ This is my personal website, so all opinions are my own. I made it to better doc
 
     [:octicons-arrow-right-24: Read more](guides/terminal-and-shell-setup.md)
 
-- :material-home-battery:{ .lg .middle } **Project: Battery Backup**
+- :material-home-battery:{ .lg .middle } **Project: 400 Amp Electrical Upgrade**
 
     ***
 
-    After being without power for a week, I built a ~13kwh battery backup system to cover the most important circuits in our house (fridge, network and _some_ HVAC).
+    Upgrading the electrical service for our home from 100A to 400A total (200A for the house and 200A for the workshop).
 
-    [:octicons-arrow-right-24: Details](projects/battery-backup.md)
+    Includes battery backup and prep for solar panels.
+
+    [:octicons-arrow-right-24: Details](projects/400amp-upgrade.md)
 
 - :simple-homeassistant:{ .lg .middle } **Smart Home: Architecture**
 
