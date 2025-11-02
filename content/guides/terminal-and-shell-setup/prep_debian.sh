@@ -20,13 +20,13 @@ MISSING_PROGRAMS=()
 
 # Check each command
 for cmd in "${REQUIRED_PROGRAMS[@]}"; do
-  if ! command -v "$cmd" &> /dev/null; then
-    MISSING_PROGRAMS+=("$cmd")
+  if ! command -v "${cmd}" &> /dev/null; then
+    MISSING_PROGRAMS+=("${cmd}")
   fi
 done
 
 # If any commands are missing, list them and exit
-if [ ${#MISSING_PROGRAMS[@]} -ne 0 ]; then
+if [[ ${#MISSING_PROGRAMS[@]} -ne 0 ]]; then
   echo -e "${BOLD_RED}Error:${RESET} Missing required programs:"
   printf '%s\n' "${MISSING_PROGRAMS[@]}"
   exit 1
@@ -41,7 +41,7 @@ fi
 
 # Check if this is an x86_64 system
 ARCH=$(uname --machine)
-case "$ARCH" in
+case "${ARCH}" in
   x86_64)  ARCH_ALT="amd64";;
   aarch64) ARCH_ALT="arm64";;
   *)
@@ -50,7 +50,7 @@ case "$ARCH" in
 esac
 
 # Check if we're root
-if [ "$(id -u)" -ne 0 ]; then
+if [[ "${UID}" -ne 0 ]]; then
     echo -e "${BOLD_YELLOW}This script must be run as root, you trust me, right?${RESET}" >&2
     exit 1
 fi
@@ -65,7 +65,7 @@ get_latest_github_release() {
     fi
 
     # Fetch the latest release using GitHub API
-    LATEST_VERSION=$(curl -s "https://api.github.com/repos/$REPO/releases/latest" | jq -r '.tag_name')
+    LATEST_VERSION=$(curl -s "https://api.github.com/repos/${REPO}/releases/latest" | jq -r '.tag_name')
 
     # Check if the API call was successful
     if [[ "${LATEST_VERSION}" == "null" || -z "${LATEST_VERSION}" ]]; then
