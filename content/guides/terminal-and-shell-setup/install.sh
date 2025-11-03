@@ -71,28 +71,50 @@ mkdir -p ~/.local/share/themes
 for THEME_URL in "${THEME_URLS[@]}"; do
   THEME_FILENAME=$(basename "${THEME_URL}")
   echo "${THEME_FILENAME}"
-  wget -q -c "${THEME_URL}" -O ~/.local/share/themes/"${THEME_FILENAME}"
+  wget -q "${THEME_URL}" -O ~/.local/share/themes/"${THEME_FILENAME}"
 done
 
 BAT_THEMES_DIR="$(bat --config-dir)/themes"
 echo "Installing Catppuccin Mocha theme for bat"
 mkdir -p "${BAT_THEMES_DIR}"
-wget -q -c https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme -O "${BAT_THEMES_DIR}/Catppuccin Mocha.tmTheme"
+wget -q https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme -O "${BAT_THEMES_DIR}/Catppuccin Mocha.tmTheme"
 bat cache --build
+
+ATUIN_CONFIG_DIR="${HOME}/.config/atuin"
+ATUIN_THEMES_DIR="${ATUIN_CONFIG_DIR}/themes"
+echo "Installing Catppuccin Mocha theme for atuin"
+mkdir -p "${ATUIN_THEMES_DIR}"
+wget -q https://github.com/catppuccin/atuin/raw/main/themes/mocha/catppuccin-mocha-sapphire.toml -O "${ATUIN_THEMES_DIR}/catppuccin-mocha-sapphire.toml"
 
 curl -s https://andrew.lecody.com/guides/terminal-and-shell-setup/generate_completions > ~/.local/bin/generate_completions
 chmod +x ~/.local/bin/generate_completions
 
-BACKUP_TIMESTAMP="$(date +%s)"
+update_files() {
+  local DST_FILE DOWNLOAD_URL
+  DST_FILE="$1"
+  DOWNLOAD_URL="$2"
+  TMPFILE=$(mktemp)
+  BACKUP_TIMESTAMP="$(date +%s)"
 
-[[ -f ~/.zshrc ]] && mv ~/.zshrc ~/.zshrc-"${BACKUP_TIMESTAMP}"
-curl -s https://andrew.lecody.com/guides/terminal-and-shell-setup/zshrc > ~/.zshrc
+  if [[ -z "${DST_FILE}" || -z "${DOWNLOAD_URL}" ]]; then
+    echo "Usage: update_files <destination_file> <download_url>" >&2
+    return 1
+  fi
 
-[[ -f ~/.zsh_aliases ]] && mv ~/.zsh_aliases ~/.zsh_aliases-"${BACKUP_TIMESTAMP}"
-curl -s https://andrew.lecody.com/guides/terminal-and-shell-setup/zsh_aliases > ~/.zsh_aliases
+  echo "Downloading: ${DOWNLOAD_URL}"
+  wget -q "${DOWNLOAD_URL}" -O "${TMPFILE}"
+  if ! diff -q "${DST_FILE}" "${TMPFILE}" > /dev/null 2>&1; then
+    echo "Existing file differs from download, backing up file file to: ${DST_FILE}-${BACKUP_TIMESTAMP}"
+    mv "${DST_FILE}" "${DST_FILE}-${BACKUP_TIMESTAMP}"
+  fi
+  echo "Installing file: ${DST_FILE}"
+  mv "${TMPFILE}" "${DST_FILE}"
+}
 
-[[ -f ~/.zsh_functions ]] && mv ~/.zsh_functions ~/.zsh_functions-"${BACKUP_TIMESTAMP}"
-curl -s https://andrew.lecody.com/guides/terminal-and-shell-setup/zsh_functions > ~/.zsh_functions
+update_files "${HOME}/.zshrc" "https://andrew.lecody.com/guides/terminal-and-shell-setup/zshrc"
+update_files "${HOME}/.zsh_aliases" "https://andrew.lecody.com/guides/terminal-and-shell-setup/zsh_aliases"
+update_files "${HOME}/.zsh_functions" "https://andrew.lecody.com/guides/terminal-and-shell-setup/zsh_functions"
+update_files "${ATUIN_CONFIG_DIR}/config.toml" "https://andrew.lecody.com/guides/terminal-and-shell-setup/atuin_config.toml"
 
 echo "Testing the zsh setup, you may see nvm get setup during this."
 zsh -i -c 'exit'
