@@ -102,9 +102,11 @@ update_files() {
 
   echo "Downloading: ${DOWNLOAD_URL}"
   wget -q "${DOWNLOAD_URL}" -O "${TMPFILE}"
-  if ! diff -q "${DST_FILE}" "${TMPFILE}" > /dev/null 2>&1; then
-    echo "Existing file differs from download, backing up file file to: ${DST_FILE}-${BACKUP_TIMESTAMP}"
-    mv "${DST_FILE}" "${DST_FILE}-${BACKUP_TIMESTAMP}"
+  if [[ -f "${DST_FILE}" ]]; then
+    if ! diff -q "${DST_FILE}" "${TMPFILE}" > /dev/null 2>&1; then
+      echo "Existing file differs from download, backing up file file to: ${DST_FILE}-${BACKUP_TIMESTAMP}"
+      mv "${DST_FILE}" "${DST_FILE}-${BACKUP_TIMESTAMP}"
+    fi
   fi
   echo "Installing file: ${DST_FILE}"
   mv "${TMPFILE}" "${DST_FILE}"
