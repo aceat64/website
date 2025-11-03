@@ -189,9 +189,44 @@ install_bat() {
     bat --version
 }
 
+install_atuin() {
+    local VERSION TMPDIR
+    VERSION="$1"
+
+    if [[ -z "${VERSION}" ]]; then
+        echo "Usage: install_atuin <version>" >&2
+        return 1
+    fi
+
+    if command -v atuin &> /dev/null; then
+        INSTALLED_VERSION=$(atuin --version | sed -n 's/^atuin \([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p')
+        if [[ "${VERSION}" == "${INSTALLED_VERSION}" ]]; then
+            echo -e "${YELLOW}Nothing to do${RESET}, the installed version of ${BG_BLUE}atuin${RESET} is already ${BG_BLUE}${INSTALLED_VERSION}${RESET}"
+            return 0
+        fi
+    fi
+
+    echo -e "\nInstalling atuin ${GREEN}v${VERSION}${RESET}"
+
+    # Download and extract the file to a tmp directory
+    TMPDIR=$(mktemp --directory)
+    curl -s -L "https://github.com/atuinsh/atuin/releases/download/v${VERSION}/atuin-${ARCH}-unknown-linux-gnu.tar.gz" | tar -C "${TMPDIR}" -zxf -
+
+    # Install the file
+    echo -e "${GREY}"
+    set -x
+    install --mode=0755 --owner=root --group=root "${TMPDIR}/atuin-${ARCH}-unknown-linux-gnu/atuin" /usr/local/bin/atuin
+    rm -rf "${TMPDIR}"
+    set +x
+    echo -e "${RESET}"
+
+    echo -e "Installed at: ${BG_BLUE}$(command -v atuin)${RESET}"
+    atuin --version
+}
+
 install_eza "$(get_latest_github_release eza-community/eza)"
 install_fzf "$(get_latest_github_release junegunn/fzf)"
 install_bat "$(get_latest_github_release sharkdp/bat)"
-curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
+install_atuin "$(get_latest_github_release atuinsh/atuin)"
 
 echo -e "\n✅ ${GREEN}All programs were installed successfully!${RESET} 🚀"
