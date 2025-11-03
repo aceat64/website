@@ -192,6 +192,6 @@ install_bat() {
 install_eza "$(get_latest_github_release eza-community/eza)"
 install_fzf "$(get_latest_github_release junegunn/fzf)"
 install_bat "$(get_latest_github_release sharkdp/bat)"
-curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh
+curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
 
 echo -e "\n✅ ${GREEN}All programs were installed successfully!${RESET} 🚀"
