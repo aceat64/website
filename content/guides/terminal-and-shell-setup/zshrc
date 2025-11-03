@@ -57,16 +57,6 @@ help() {
 # TODO: make this work with commands like `curl --help all`
 # alias -g -- --help="--help 2>&1 | bathelp"
 
-# fzf keybindings and fuzzy search
-source <(fzf --zsh)
-# catppuccin mocha theme for fzf
-export FZF_DEFAULT_OPTS=" \
---color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
---color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
---color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
---color=selected-bg:#45475a \
---multi"
-
 # zsh-autosuggest config
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20

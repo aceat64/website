@@ -8,7 +8,6 @@ REQUIRED_PROGRAMS=(
   git
   atuin
   bat
-  fzf
   eza
   oh-my-posh
 )

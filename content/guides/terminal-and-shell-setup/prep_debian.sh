@@ -119,41 +119,6 @@ install_eza() {
     eza --version
 }
 
-install_fzf() {
-    local VERSION TMPDIR
-    VERSION="$1"
-
-    if [[ -z "${VERSION}" ]]; then
-        echo "Usage: install_fzf <version>" >&2
-        return 1
-    fi
-
-    if command -v fzf &> /dev/null; then
-        INSTALLED_VERSION=$(fzf --version | sed -n 's/^\([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p')
-        if [[ "${VERSION}" == "${INSTALLED_VERSION}" ]]; then
-            echo -e "${YELLOW}Nothing to do${RESET}, the installed version of ${BG_BLUE}fzf${RESET} is already ${BG_BLUE}${INSTALLED_VERSION}${RESET}"
-            return 0
-        fi
-    fi
-
-    echo -e "\nInstalling fzf ${GREEN}v${VERSION}${RESET}"
-
-    # Download and extract the file to a tmp directory
-    TMPDIR=$(mktemp --directory)
-    curl -s -L "https://github.com/junegunn/fzf/releases/download/v${VERSION}/fzf-${VERSION}-linux_${ARCH_ALT}.tar.gz" | tar -C "${TMPDIR}" -zxf -
-
-    # Install the file
-    echo -e "${GREY}"
-    set -x
-    install --mode=0755 --owner=root --group=root "${TMPDIR}/fzf" /usr/local/bin/fzf
-    rm -rf "${TMPDIR}"
-    set +x
-    echo -e "${RESET}"
-
-    echo -e "Installed at: ${BG_BLUE}$(command -v fzf)${RESET}"
-    fzf --version
-}
-
 install_bat() {
     local VERSION TMPDIR
     VERSION="$1"
@@ -225,7 +190,6 @@ install_atuin() {
 }
 
 install_eza "$(get_latest_github_release eza-community/eza)"
-install_fzf "$(get_latest_github_release junegunn/fzf)"
 install_bat "$(get_latest_github_release sharkdp/bat)"
 install_atuin "$(get_latest_github_release atuinsh/atuin)"
 
