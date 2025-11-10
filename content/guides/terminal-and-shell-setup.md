@@ -1,5 +1,4 @@
 ---
-status: new
 priority: 0.8
 icon: octicons/terminal-16
 description: Terminal and shell configuration, using Ghostty, zsh and my own personalized theme.

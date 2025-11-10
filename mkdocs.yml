@@ -26,6 +26,8 @@ nav:
       - projects/battery-backup.md
   - Literary:
       - literary/recommended-reading.md
+  - Notes:
+      - notes/dimensional_lumber.md
 extra:
   status:
     new: Recently added
@@ -50,6 +52,7 @@ plugins:
   - typeset
   - meta
   - search
+  - table-reader
   - social:
       cards_layout: default/variant
   - optimize
