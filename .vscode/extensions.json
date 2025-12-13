@@ -9,7 +9,7 @@
     "aaron-bond.better-comments",
     "dbaeumer.vscode-eslint",
     "tamasfe.even-better-toml",
-    "esbenp.prettier-vscode",
+    "prettier.prettier-vscode",
     "timonwong.shellcheck",
     "redhat.vscode-yaml"
   ],
