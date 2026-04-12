@@ -1,9 +1,10 @@
 ---
+title: About
 priority: 1.0
 hide:
-    - navigation
-    - toc
-    - footer
+  - navigation
+  - toc
+  - footer
 ---
 
 # About The Site
@@ -20,6 +21,8 @@ This is my personal website, so all opinions are my own. I made it to better doc
 
     My setup using Ghostty, zsh, Oh My Posh and a catppuccin-mocha style theme.
 
+    ![Ghostty with zsh and acecat theme, remote and root](guides/terminal-and-shell-setup/zsh_screenshot_2.png)
+
     [:octicons-arrow-right-24: Read more](guides/terminal-and-shell-setup.md)
 
 - :material-home-battery:{ .lg .middle } **Project: 400 Amp Electrical Upgrade**
@@ -32,13 +35,15 @@ This is my personal website, so all opinions are my own. I made it to better doc
 
     [:octicons-arrow-right-24: Details](projects/400amp-upgrade.md)
 
-- :simple-homeassistant:{ .lg .middle } **Smart Home: Architecture**
+- :lucide-library:{ .lg .middle } **Links: Recommended Reading**
 
     ***
 
-    A general overview of my smart home setup, powered by [Home Assistant](https://www.home-assistant.io/).
+    These are some of the books I recommend reading.
 
-    [:octicons-arrow-right-24: Read more](smart-home/architecture.md)
+    I prefer buying physical books from indepenant/local book stores and from online retailers/publishers that offer DRM-free ebooks.
+
+    [:octicons-arrow-right-24: Read more](links/recommended-reading.md)
 
 </div>
 

@@ -9,25 +9,25 @@ docs_dir: content
 nav:
   - About: index.md
   - Guides:
-      - guides/macos-setup.md
       - guides/terminal-and-shell-setup.md
+      - guides/macos-setup.md
       - guides/nginx-proxy-manager-udmp.md
       - guides/rpi-k8s-talos-terraform.md
       - guides/mkdocs-material-insider-github-pages-action.md
-      - guides/http-status-codes.md
-      - guides/zfs-notes.md
-      - guides/ipv6.md
-  - Smart Home:
-      - smart-home/architecture.md
-      - smart-home/garage-door.md
-      - smart-home/switches.md
   - Projects:
       - projects/400amp-upgrade.md
       - projects/battery-backup.md
-  - Literary:
-      - literary/recommended-reading.md
+      - Smart Home:
+          - projects/smart-home/architecture.md
+          - projects/smart-home/garage-door.md
+          - projects/smart-home/switches.md
+  - Links:
+      - links/recommended-reading.md
   - Notes:
       - notes/dimensional_lumber.md
+      - notes/http-status-codes.md
+      - notes/ipv6.md
+      - notes/zfs.md
 extra:
   status:
     new: Recently added

@@ -15,6 +15,3 @@ dependencies = [
     "mkdocs-table-reader-plugin>=3.1.0",
     "pre-commit>=4.3.0",
 ]
-
-[tool.uv.sources]
-mkdocs-material = { git = "https://github.com/squidfunk/mkdocs-material-insiders" }

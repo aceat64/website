@@ -1,4 +1,5 @@
 ---
+priority: 0.4
 status: deprecated
 icon: simple/nginxproxymanager
 description: Use your UDM-Pro as an HTTP proxy for multiple sites/services.
@@ -36,81 +37,81 @@ description: Use your UDM-Pro as an HTTP proxy for multiple sites/services.
 
     ??? example "30-proxymanager.conflist"
 
-        ```json
-        {
-            "cniVersion": "0.4.0",
-            "name": "proxymanager",
-            "plugins": [{
-                "type": "macvlan",
-                "mode": "bridge",
-                "master": "br6",
-                "ipam": {
-                    "type": "static",
-                    "addresses": [{
-                        "address": "10.0.6.4/24",
-                        "gateway": "10.0.6.1"
-                    }],
-                    "routes": [{"dst": "0.0.0.0/0"}]
-                }
-            }]
-        }
-        ```
+          ```json
+          {
+              "cniVersion": "0.4.0",
+              "name": "proxymanager",
+              "plugins": [{
+                  "type": "macvlan",
+                  "mode": "bridge",
+                  "master": "br6",
+                  "ipam": {
+                      "type": "static",
+                      "addresses": [{
+                          "address": "10.0.6.4/24",
+                          "gateway": "10.0.6.1"
+                      }],
+                      "routes": [{"dst": "0.0.0.0/0"}]
+                  }
+              }]
+          }
+          ```
 
 - Create `/mnt/data/on_boot.d/20-proxymanager.sh` with the following:
 
     ??? example "20-proxymanager.sh"
 
-        ```shell
-        #!/bin/sh
+          ```shell
+          #!/bin/sh
 
-        ## configuration variables
-        VLAN=6
-        IPV4_IP="10.0.6.4"
+          ## configuration variables
+          VLAN=6
+          IPV4_IP="10.0.6.4"
 
-        # This is the IP address of the container. You may want to set it to match
-        # your own network structure such as 192.168.5.3 or similar
-        IPV4_GW="10.0.6.1/24"
+          # This is the IP address of the container. You may want to set it to match
+          # your own network structure such as 192.168.5.3 or similar
+          IPV4_GW="10.0.6.1/24"
 
-        # As above, this should match the gateway of the VLAN for the container
-        # network as above which is usually the .1/24 range of the IPV4_IP
-        # container name; e.g. nextdns, pihole, adguardhome, etc
-        CONTAINER=proxymanager
+          # As above, this should match the gateway of the VLAN for the container
+          # network as above which is usually the .1/24 range of the IPV4_IP
+          # container name; e.g. nextdns, pihole, adguardhome, etc
+          CONTAINER=proxymanager
 
-        if ! test -f /opt/cni/bin/macvlan; then
-            echo "Error: CNI plugins not found." >&2
-            exit 1
-        fi
+          if ! test -f /opt/cni/bin/macvlan; then
+              echo "Error: CNI plugins not found." >&2
+              exit 1
+          fi
 
-        # set VLAN bridge promiscuous
-        ip link set br${VLAN} promisc on
+          # set VLAN bridge promiscuous
+          ip link set br${VLAN} promisc on
 
-        # create macvlan bridge and add IPv4 IP
-        ip link add br${VLAN}.mac link br${VLAN} type macvlan mode bridge
-        ip addr add ${IPV4_GW} dev br${VLAN}.mac noprefixroute
+          # create macvlan bridge and add IPv4 IP
+          ip link add br${VLAN}.mac link br${VLAN} type macvlan mode bridge
+          ip addr add ${IPV4_GW} dev br${VLAN}.mac noprefixroute
 
-        # (optional) add IPv6 IP to VLAN bridge macvlan bridge
-        if [ -n "${IPV6_GW}" ]; then
-            ip -6 addr add ${IPV6_GW} dev br${VLAN}.mac noprefixroute
-        fi
+          # (optional) add IPv6 IP to VLAN bridge macvlan bridge
+          if [ -n "${IPV6_GW}" ]; then
+              ip -6 addr add ${IPV6_GW} dev br${VLAN}.mac noprefixroute
+          fi
 
-        # set macvlan bridge promiscuous and bring it up
-        ip link set br${VLAN}.mac promisc on
-        ip link set br${VLAN}.mac up
+          # set macvlan bridge promiscuous and bring it up
+          ip link set br${VLAN}.mac promisc on
+          ip link set br${VLAN}.mac up
 
-        # add IPv4 route to DNS container
-        ip route add ${IPV4_IP}/32 dev br${VLAN}.mac
+          # add IPv4 route to DNS container
+          ip route add ${IPV4_IP}/32 dev br${VLAN}.mac
 
-        # (optional) add IPv6 route to container
-        if [ -n "${IPV6_IP}" ]; then
-            ip -6 route add ${IPV6_IP}/128 dev br${VLAN}.mac
-        fi
+          # (optional) add IPv6 route to container
+          if [ -n "${IPV6_IP}" ]; then
+              ip -6 route add ${IPV6_IP}/128 dev br${VLAN}.mac
+          fi
 
-        if podman container exists ${CONTAINER}; then
-            podman start ${CONTAINER}
-        else
-            logger -s -t podman-dns -p ERROR Container $CONTAINER not found, make sure you set the proper name, you can ignore this error if it is your first time setting it up
-        fi
-        ```
+          if podman container exists ${CONTAINER}; then
+              podman start ${CONTAINER}
+          else
+              logger -s -t podman-dns -p ERROR Container $CONTAINER not found, make sure you set the proper name, you can ignore this error if it is your first time setting it up
+          fi
+          ```
 
 - Run the following commands:
 

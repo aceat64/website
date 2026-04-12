@@ -4,7 +4,16 @@ status: new
 
 # 🪚 Dimensional Lumber
 
-{{ read_csv('dimensional_lumber.csv') }}
+| Nominal | Actual | Decimal |
+| ------- | ------ | ------- |
+| 1       | 3/4    | 0.75    |
+| 2       | 1-1/2  | 1.5     |
+| 3       | 2-1/2  | 2.5     |
+| 4       | 3-1/2  | 3.5     |
+| 6       | 5-1/2  | 5.5     |
+| 8       | 7-1/4  | 7.25    |
+| 10      | 9-1/4  | 9.25    |
+| 12      | 11-1/4 | 11.25   |
 
 ## Links
 

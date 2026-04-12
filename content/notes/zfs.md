@@ -3,7 +3,7 @@ icon: simple/openzfs
 description: Various notes about my usage of ZFS/OpenZFS.
 ---
 
-# ZFS Notes
+# ZFS
 
 In this document, replace `worldsgrave` with the name of your zpool.
 
@@ -75,7 +75,7 @@ systemctl enable zfs-scrub@worldsgrave.timer
 
 ## Scheduled Snapshots
 
-Install zrepl, see [zrepl.yaml](zfs-notes/zrepl.yaml) for reference.
+Install zrepl, see [zrepl.yaml](zfs/zrepl.yaml) for reference.
 
 ## Useful Commands
 

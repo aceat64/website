@@ -21,7 +21,7 @@ The "Manga Guide" series is a great way to learn about various topics from datab
 ## Sci-Fi
 
 - Literally anything by [qntm](https://qntm.org) (Sam Hughes), and all of it is available online for free.
-    - [There Is No Antimemetics Division](https://qntm.org/scp) - Set in the world of the [SCP Foundation wiki](https://scp-wiki.wikidot.com/). It explores the concept of antimemes, ideas with self-censoring properties.
-    - [Ra](https://qntm.org/ra) - Magic as science/engineering, think "magic NASA".
-    - [Fine Structure](https://qntm.org/structure) - The first thing I ever read from qntm, I have been a fan ever since.
-    - [Ed](https://qntm.org/ed) - Hilarious and over the top mad science. Who doesn't like giant robot battles?
+  - [There Is No Antimemetics Division](https://qntm.org/scp) - Set in the world of the [SCP Foundation wiki](https://scp-wiki.wikidot.com/). It explores the concept of antimemes, ideas with self-censoring properties.
+  - [Ra](https://qntm.org/ra) - Magic as science/engineering, think "magic NASA".
+  - [Fine Structure](https://qntm.org/structure) - The first thing I ever read from qntm, I have been a fan ever since.
+  - [Ed](https://qntm.org/ed) - Hilarious and over the top mad science. Who doesn't like giant robot battles?

@@ -15,13 +15,13 @@ for the OS and building the Kubernetes cluster. After the cluster is bootstraped
 At the end of this tutorial you'll have a fully working Kubernetes cluster with the following services configured and ready to use:
 
 - [Talos](https://talos.dev) - Minimal and hardened operating system and tools that deploy and manage kubernetes nodes/clusters.
-    - Virtual (shared) IP address for the talos and Kubernetes endpoints
+  - Virtual (shared) IP address for the talos and Kubernetes endpoints
 - [MetalLB](https://metallb.universe.tf) - Load balancers using virtual/shared IPs
 - [metrics-server](https://github.com/kubernetes-sigs/metrics-server) - Provide metrics for Kubernetes autoscaling (e.g. horizontal pod autoscaler)
 - [cert-manager](https://cert-manager.io/) - Automated TLS certificate management
 - [Rook-Ceph](https://rook.io/) - Distributed block, object and file storage
 - [Prometheus](https://prometheus.io/) - Monitoring and alerting
-    - Full monitoring of your cluster! We gather metrics from just about every service that has them.
+  - Full monitoring of your cluster! We gather metrics from just about every service that has them.
 - [Loki](https://grafana.com/oss/loki/) - Log aggregation
 - [Grafana](https://grafana.com/oss/grafana/) - Visualize and explore metrics, logs and other data. \* Since we use the [kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack) helm chart a bunch of dashboards are pre-generated for you. We also automatically deploy dashboards for monitoring rook-ceph.
 - [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/) - Send Prometheus alerts to email, PagerDuty, etc.
