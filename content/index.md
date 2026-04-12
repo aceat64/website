@@ -35,7 +35,7 @@ This is my personal website, so all opinions are my own. I made it to better doc
 
     [:octicons-arrow-right-24: Details](projects/400amp-upgrade.md)
 
-- :lucide-library:{ .lg .middle } **Links: Recommended Reading**
+- :material-book-open-variant:{ .lg .middle } **Links: Recommended Reading**
 
     ***
 
