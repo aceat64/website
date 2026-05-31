@@ -11,7 +11,7 @@ hide:
 - Use [SLAAC](<https://en.wikipedia.org/wiki/IPv6#Stateless_address_autoconfiguration_(SLAAC)>) whenever possible, avoid DHCP
 - Using nibble-aligned (4 bit) prefixes makes things easier
 - `fe80::/10` are [link-local addresses](https://en.wikipedia.org/wiki/Link-local_address)
-  - Gross, it's NOT nibble-aligned, which means this range is `fe80::` to `febf::`. So anything that starts with `fe8`, `fe9`, `fea` and `feb`.
+    - Gross, it's NOT nibble-aligned, which means this range is `fe80::` to `febf::`. So anything that starts with `fe8`, `fe9`, `fea` and `feb`.
 - [DHCPv6 prefix delegation](https://en.wikipedia.org/wiki/Prefix_delegation) is a common way ISPs hand out IPv6 ranges.
 
 ## How Many /64s
