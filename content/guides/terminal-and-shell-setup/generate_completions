@@ -17,6 +17,7 @@ PROGRAMS=(
     "tenv"      "tenv completion zsh"
     "atuin"     "atuin gen-completions --shell zsh"
     "restic"    "restic generate --zsh-completion -"
+    "mise"      "mise completion zsh"
 )
 
 for PROGRAM_NAME GENERATE_CMD in "${(@kv)PROGRAMS}"; do

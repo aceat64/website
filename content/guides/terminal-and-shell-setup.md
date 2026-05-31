@@ -55,7 +55,7 @@ Required software:
     brew install atuin bat eza jandedobbeleer/oh-my-posh/oh-my-posh
     ```
 
-=== ":simple-linux: Linux"
+=== ":simple-debian: Debian"
 
     Some distros have recent enough versions of `bat` and `eza`, so you can just use your package manager to install them. For Debian/Ubuntu, I wrote a script to do a system-wide install for you:
 
@@ -72,6 +72,18 @@ Required software:
     ```
 
     This script can also be run again for upgrades.
+
+=== ":simple-archlinux: Arch"
+
+    ```shell
+    pacman -S atuin bat eza zsh-autosuggestions zsh-syntax-highlighting
+    ```
+
+    You may need to install `oh-my-posh` using their script:
+
+    ```shell
+    curl -s https://ohmyposh.dev/install.sh | bash -s
+    ```
 
 !!! note
 
