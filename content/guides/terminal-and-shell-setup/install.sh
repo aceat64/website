@@ -115,6 +115,7 @@ update_files() {
 update_files "${HOME}/.zshrc" "https://andrew.lecody.com/guides/terminal-and-shell-setup/zshrc"
 update_files "${HOME}/.zsh_aliases" "https://andrew.lecody.com/guides/terminal-and-shell-setup/zsh_aliases"
 update_files "${HOME}/.zsh_functions" "https://andrew.lecody.com/guides/terminal-and-shell-setup/zsh_functions"
+update_files "${HOME}/.zsh_keybinds" "https://andrew.lecody.com/guides/terminal-and-shell-setup/zsh_keybinds"
 update_files "${ATUIN_CONFIG_DIR}/config.toml" "https://andrew.lecody.com/guides/terminal-and-shell-setup/atuin_config.toml"
 
 echo "Testing the zsh setup, you may see nvm get setup during this."

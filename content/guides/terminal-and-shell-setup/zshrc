@@ -93,9 +93,10 @@ alias lx="eza -lbhHigUmuSa@" # list, all, verbose, and xattrs
 alias tree="eza --tree" # tree
 alias lS="eza -1" # display one entry per line
 
-# load our aliases and functions
+# load our aliases, functions, and keybinds
 [ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
 [ -f ~/.zsh_functions ] && source ~/.zsh_functions
+[ -f ~/.zsh_keybinds ] && source ~/.zsh_keybinds
 
 zshspeed() {
   for i in $(seq 1 10); do
