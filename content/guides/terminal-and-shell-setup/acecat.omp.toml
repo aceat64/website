@@ -72,7 +72,7 @@ version = 3
       threshold = 3000
 
   [[blocks.segments]]
-    template = "{{ if env \"SERIAL_CONNECTION\" }} <p:green>\uf124 {{ env \"SERIAL_CONNECTION\" }}</> {{ end }}{{ if .SSHSession }} \ueba9 {{ end }}{{ .UserName }}@{{ .HostName }}{{ if eq .HostName \"siva\" }} <p:red>⬢ SIVA</>{{ end }}"
+    template = "{{ if env \"SERIAL_CONNECTION\" }} <p:green>\uf124 {{ env \"SERIAL_CONNECTION\" }}</>{{ end }}{{ if .SSHSession }} \ueba9{{ end }} {{ .UserName }}@{{ .HostName }}{{ if eq .HostName \"siva\" }} <p:red>⬢ SIVA</>{{ end }}"
     foreground = "p:yellow"
     type = "session"
     style = "plain"
