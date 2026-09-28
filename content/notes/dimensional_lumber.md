@@ -1,7 +1,3 @@
----
-status: new
----
-
 # 🪚 Dimensional Lumber
 
 | Nominal | Actual | Decimal |
