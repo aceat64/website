@@ -31,7 +31,7 @@ jobs:
         with:
           python-version-file: "pyproject.toml"
 
-      - uses: astral-sh/setup-uv@b75a909f75acd358c2196fb9a5f1299a9a8868a4 # v6
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
 
       # Insiders is the sponsorware version of Material for MkDocs
       # https://squidfunk.github.io/mkdocs-material/insiders/
